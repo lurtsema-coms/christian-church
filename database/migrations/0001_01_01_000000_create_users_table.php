@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('approval_status')->default(0);
             $table->string('title')->nullable();
             $table->string('country')->nullable();
             $table->text('address')->nullable();
@@ -28,10 +30,11 @@ return new class extends Migration
             $table->date('date_baptism')->nullable();
             $table->text('testimony')->nullable();
             $table->text('extra_detail')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
