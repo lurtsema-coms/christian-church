@@ -57,7 +57,18 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'birthday' => 'date',
+            'wedding_anniv' => 'date',
+            'date_salvation' => 'date',
+            'approved_at' => 'date',
+            'date_baptism' => 'date',
+            'approval_status' => 'boolean',
             'password' => 'hashed',
         ];
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

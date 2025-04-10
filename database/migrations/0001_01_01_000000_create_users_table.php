@@ -32,6 +32,7 @@ return new class extends Migration
             $table->text('extra_detail')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->date('approved_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
