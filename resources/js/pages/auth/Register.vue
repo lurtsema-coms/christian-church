@@ -45,12 +45,12 @@ const submit = () => {
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
                 <div class="flex flex-col sm:flex-row gap-2">
-                    <div class="grid gap-2 ">
+                    <div class="grid gap-2 w-full">
                         <Label for="email">Email address</Label>
                         <Input id="email" type="email" required :tabindex="2"  v-model="form.email" placeholder="email@example.com" />
                         <InputError :message="form.errors.email" />
                     </div>
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full">
                         <Label for="password">Password</Label>
                         <Input
                             id="password"
@@ -63,7 +63,7 @@ const submit = () => {
                         />
                         <InputError :message="form.errors.password" />
                     </div>
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full">
                         <Label for="password_confirmation">Confirm password</Label>
                         <Input
                             id="password_confirmation"
@@ -77,28 +77,28 @@ const submit = () => {
                         <InputError :message="form.errors.password_confirmation" />
                     </div>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <div class="grid gap-2">
+                <div class="flex flex-col sm:flex-row gap-2 ">
+                    <div class="grid gap-2 w-full sm:w-3/4">
                         <Label for="name">Full Name</Label>
                         <Input id="name" type="text" required autofocus :tabindex="1" v-model="form.name" placeholder="Full Name" />
                         <InputError :message="form.errors.name" />
                     </div>
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full sm:w-1/4">
                         <Label for="title">Title</Label>
-                        <Input id="title" type="text" required autofocus :tabindex="1" v-model="form.title" placeholder="e.g. Mr., Mrs., Dr." />
+                        <Input id="title" type="text"  autofocus :tabindex="1" v-model="form.title" placeholder="e.g. Mr., Mrs., Dr." />
                         <InputError :message="form.errors.title" />
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-2">
-                    <div class="grid gap-2">
-                        <Label for="birthday">Date of Birth</Label>
-                        <Input id="birthday" type="date" required autofocus :tabindex="1" v-model="form.birthday" placeholder="" />
-                        <InputError :message="form.errors.birthday" />
-                    </div>
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full sm:w-3/5">
                         <Label for="contact_number">Contact Number</Label>
                         <Input id="contact_number" type="text" required autofocus :tabindex="1" v-model="form.contact_number" placeholder="Contact Number" />
                         <InputError :message="form.errors.contact_number" />
+                    </div>
+                    <div class="grid gap-2 w-full sm:w-1/5">
+                        <Label for="birthday">Date of Birth</Label>
+                        <Input id="birthday" type="date" required autofocus :tabindex="1" v-model="form.birthday" placeholder="" />
+                        <InputError :message="form.errors.birthday" />
                     </div>
                 </div>
                 <div class="grid gap-2">
@@ -124,34 +124,34 @@ const submit = () => {
                     </div>
                     <div class="grid gap-2">
                         <Label for="city">City</Label>
-                        <Input id="city" type="text" required autofocus :tabindex="1" v-model="form.city" placeholder="City" />
+                        <Input id="city" type="text"  autofocus :tabindex="1" v-model="form.city" placeholder="City" />
                         <InputError :message="form.errors.city" />
                     </div>
                     <div class="grid gap-2">
                         <Label for="state">State</Label>
-                        <Input id="state" type="text" required autofocus :tabindex="1" v-model="form.state" placeholder="State" />
+                        <Input id="state" type="text"  autofocus :tabindex="1" v-model="form.state" placeholder="State" />
                         <InputError :message="form.errors.state" />
                     </div>
                 </div>
                 <div class="grid gap-2">
                     <Label for="web_page">Web Page</Label>
-                    <Input id="web_page" type="text" required autofocus :tabindex="1" v-model="form.web_page" placeholder="e.g. https://example.com" />
+                    <Input id="web_page" type="text"  autofocus :tabindex="1" v-model="form.web_page" placeholder="e.g. https://example.com" />
                     <InputError :message="form.errors.web_page" />
                 </div>
                 <div class="flex flex-col sm:flex-row gap-2">
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full">
                         <Label for="wedding_anniv">Wedding Anniversary</Label>
-                        <Input id="wedding_anniv" type="date" required autofocus :tabindex="1" v-model="form.wedding_anniv" placeholder="" />
+                        <Input id="wedding_anniv" type="date"  autofocus :tabindex="1" v-model="form.wedding_anniv" placeholder="" />
                         <InputError :message="form.errors.wedding_anniv" />
                     </div>
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full">
                         <Label for="date_salvation">Date of Salvation</Label>
-                        <Input id="date_salvation" type="date" required autofocus :tabindex="1" v-model="form.date_salvation" placeholder="" />
+                        <Input id="date_salvation" type="date"  autofocus :tabindex="1" v-model="form.date_salvation" placeholder="" />
                         <InputError :message="form.errors.date_salvation" />
                     </div>
-                    <div class="grid gap-2">
+                    <div class="grid gap-2 w-full">
                         <Label for="date_baptism">Date of Baptism</Label>
-                        <Input id="date_baptism" type="date" required autofocus :tabindex="1" v-model="form.date_baptism" placeholder="" />
+                        <Input id="date_baptism" type="date"  autofocus :tabindex="1" v-model="form.date_baptism" placeholder="" />
                         <InputError :message="form.errors.date_baptism" />
                     </div>
                 </div>
@@ -161,7 +161,7 @@ const submit = () => {
                         id="testimony"
                         v-model="form.testimony"
                         class="border border-input bg-background text-sm rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary resize-none h-32"
-                        required
+                        
                     >
                     </textarea>
                     <InputError :message="form.errors.testimony" />
@@ -172,7 +172,7 @@ const submit = () => {
                         id="extra_detail"
                         v-model="form.extra_detail"
                         class="border border-input bg-background text-sm rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary resize-none h-32"
-                        required
+                        
                     >
                     </textarea>
                     <InputError :message="form.errors.extra_detail" />
