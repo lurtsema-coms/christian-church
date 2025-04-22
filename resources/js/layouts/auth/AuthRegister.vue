@@ -9,8 +9,8 @@ defineProps<{
 </script>
 
 <template>
-    <div class="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-green-500 to-indigo-600 p-8">
-        <div class="w-full max-w-2xl">
+    <div class="flex min-h-screen flex-col items-center justify-center bg-gradient-to-r from-[#0B1C33] to-[#0D223E] p-8">
+        <div class="w-full max-w-3xl">
             <div class="flex flex-col gap-8 bg-white p-6 rounded-lg shadow-md">
                 <div class="flex flex-col items-center gap-4">
                     <Link :href="route('home')" class="flex flex-col items-center gap-2 font-medium">

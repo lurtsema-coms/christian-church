@@ -95,7 +95,7 @@ const submit = () => {
                         <Input id="contact_number" type="text" required autofocus :tabindex="1" v-model="form.contact_number" placeholder="Contact Number" />
                         <InputError :message="form.errors.contact_number" />
                     </div>
-                    <div class="grid gap-2 w-full sm:w-1/5">
+                    <div class="grid gap-2 w-full sm:w-2/5">
                         <Label for="birthday">Date of Birth</Label>
                         <Input id="birthday" type="date" required autofocus :tabindex="1" v-model="form.birthday" placeholder="" />
                         <InputError :message="form.errors.birthday" />
