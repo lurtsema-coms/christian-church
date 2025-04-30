@@ -16,9 +16,26 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('approval_status')->default(0);
+            $table->string('title')->nullable();
+            $table->string('country')->nullable();
+            $table->text('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('contact_number')->nullable();
+            $table->text('web_page')->nullable();
+            $table->date('birthday')->nullable();
+            $table->date('wedding_anniv')->nullable();
+            $table->date('date_salvation')->nullable();
+            $table->date('date_baptism')->nullable();
+            $table->text('testimony')->nullable();
+            $table->text('extra_detail')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->date('approved_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

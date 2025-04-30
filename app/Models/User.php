@@ -4,13 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +22,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'approval_status',
+        'title',
+        'country',
+        'address',
+        'city',
+        'state',
+        'contact_number',
+        'web_page',
+        'birthday',
+        'wedding_anniv',
+        'date_salvation',
+        'date_baptism',
+        'testimony',
+        'extra_detail',
     ];
 
     /**
@@ -42,7 +57,18 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'birthday' => 'date',
+            'wedding_anniv' => 'date',
+            'date_salvation' => 'date',
+            'approved_at' => 'date',
+            'date_baptism' => 'date',
+            'approval_status' => 'boolean',
             'password' => 'hashed',
         ];
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }
