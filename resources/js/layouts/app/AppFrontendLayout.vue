@@ -35,7 +35,7 @@
                     <NavigationMenu>
                         <NavigationMenuList>
                             <NavigationMenuItem>
-                                <NavigationMenuLink href="" :class="navigationMenuTriggerStyle()">
+                                <NavigationMenuLink href="/" :class="navigationMenuTriggerStyle()">
                                 Home
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
@@ -75,7 +75,7 @@
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <NavigationMenuLink href="/docs/introduction" :class="navigationMenuTriggerStyle()">
+                                <NavigationMenuLink href="/sermons" :class="navigationMenuTriggerStyle()">
                                     Sermons
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

@@ -7,6 +7,11 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
 
+
+Route::get('/sermons', function () {
+    return Inertia::render('Sermons');
+})->name('sermons');
+
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
