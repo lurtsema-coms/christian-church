@@ -85,7 +85,7 @@
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <NavigationMenuLink href="/docs/introduction" :class="navigationMenuTriggerStyle()">
+                                <NavigationMenuLink href="/login" :class="navigationMenuTriggerStyle()">
                                     Member Area
                                 </NavigationMenuLink>
                             </NavigationMenuItem>

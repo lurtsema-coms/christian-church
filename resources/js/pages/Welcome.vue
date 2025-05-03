@@ -24,7 +24,7 @@
         <div class="max-w-4xl mx-auto mt-16 border rounded-md h-96">
 
         </div>
-        <button class="bg-[#00245E] text-white px-4 py-2 rounded-md mx-auto flex mt-16 text-2xl">WATCH THE SERMONS</button>
+        <button href="/sermons" class="bg-[#00245E] text-white px-4 py-2 rounded-md mx-auto flex mt-16 text-2xl">WATCH THE SERMONS</button>
     </div>
 
     <div class="py-16 bg-[#00457A]">
