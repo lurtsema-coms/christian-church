@@ -14,6 +14,11 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Sermons',
+        href: '/admin_sermons',
+        icon: LayoutGrid,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
