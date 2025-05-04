@@ -7,6 +7,9 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
 
+Route::get('/prayer', function () {
+    return Inertia::render('Prayer');
+})->name('prayer');
 
 Route::get('/sermons', function () {
     return Inertia::render('Sermons');
