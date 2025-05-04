@@ -10,6 +10,7 @@
     } from '@/components/ui/navigation-menu'
 
     import Countdown from '@/components/Coutdown.vue';
+    import { Link } from '@inertiajs/vue3';
 
     const components: { title: string, href: string, description: string }[] = 
         [
@@ -27,68 +28,32 @@
 </script>
 
 <template>
-    <div class="z-10 w-full bg-white shadow-sm">
+    <!-- Navbar -->
+    <div class="fixed z-50 w-full bg-white border-b shadow-sm border-neutral-200">
         <nav class="w-full px-10 mx-auto max-w-8xl">
             <div class="relative flex justify-between py-4">
                 <img :src="'/img/church_logo.png'" class="max-w-12" alt="church_logo.png">
                 <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
                     <NavigationMenu>
                         <NavigationMenuList>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/" :class="navigationMenuTriggerStyle()">
-                                Home
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                <ul class="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                                    <li v-for="component in components" :key="component.title">
-                                    <NavigationMenuLink as-child>
-                                        <a
-                                        :href="component.href"
-                                        class="block p-3 space-y-1 leading-none no-underline transition-colors rounded-md outline-none select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                                        >
-                                        <div class="text-lg font-medium leading-none text-neutral-700">{{ component.title }}</div>
-                                        <p class="text-sm leading-snug line-clamp-2 text-muted-foreground">
-                                            {{ component.description }}
-                                        </p>
-                                        </a>
-                                    </NavigationMenuLink>
-                                    </li>
-                                </ul>
-                                </NavigationMenuContent>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/docs/introduction" :class="navigationMenuTriggerStyle()">
-                                    Team
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/docs/introduction" :class="navigationMenuTriggerStyle()">
-                                    Prayer
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/docs/introduction" :class="navigationMenuTriggerStyle()">
-                                    Online Giving
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/sermons" :class="navigationMenuTriggerStyle()">
-                                    Sermons
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/docs/introduction" :class="navigationMenuTriggerStyle()">
-                                    Ministries
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink href="/login" :class="navigationMenuTriggerStyle()">
-                                    Member Area
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
+                            <Link href="/" :class="navigationMenuTriggerStyle()">
+                            Home
+                            </Link>
+                            <Link href="/" :class="navigationMenuTriggerStyle()">
+                            About Us
+                            </Link>
+                            <Link href="/prayer" :class="navigationMenuTriggerStyle()">
+                                Prayer
+                            </Link>
+                            <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
+                                Online Giving
+                            </Link>
+                            <Link href="/sermons" :class="navigationMenuTriggerStyle()">
+                                Sermons
+                            </Link>
+                            <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
+                                Ministries
+                            </Link>
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
@@ -105,4 +70,58 @@
     </div>
     
     <slot></slot>
+
+    <!-- Footer -->
+    <footer>
+        <div class="flex flex-col">
+            <div class="bg-[#12876F] w-full px-5">
+                <div class="flex flex-wrap w-full max-w-4xl gap-8 py-12 mx-auto md:gap-28">
+                    <img :src="'/img/church_logo_white.png'" class="max-w-24" alt="church_logo.png">
+                    <div class="flex flex-col justify-center gap-2">
+                        <Heading title="Connect With Us"/>
+                        <p class="text-white">
+                            Address: <span class="font-bold">75-5719 Ali‘i Dr #1d Kailua-Kona, Hawaii 96740</span>
+                        </p>
+                        <p class="text-white">
+                            Phone: <span class="font-bold underline">(808)772-3996</span>
+                        </p>
+                        <p class="text-white">
+                            Email: <span class="font-bold underline">RevKev@BigIslandChristianChurch.com</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-[#16181d] w-full px-5">
+                <div class="grid w-full max-w-5xl grid-cols-2 gap-8 py-12 mx-auto md:grid-cols-3 lg:grid-cols-4">
+                    <div>
+                        <HeadingDescription description="ABOUT US" class="mb-4"/>
+                        <a href="" class="block text-neutral-300">What to Expect</a>
+                        <a href="" class="block text-neutral-300">Our Beliefs</a>
+                    </div>
+                    <div>
+                        <HeadingDescription description="Get Involved" class="mb-4"/>
+                        <a href="" class="block text-neutral-300">Online Giving</a>
+                        <a href="" class="block text-neutral-300">Submit Prayers</a>
+                    </div>
+                    <div>
+                        <HeadingDescription description="AFFILIATIONS" class="mb-4"/>
+                        <a href="" class="block text-neutral-300">The Bereans</a>
+                        <a href="" class="block text-neutral-300">Answers in Genesis</a>
+                        <a href="" class="block text-neutral-300">9Marks</a>
+                        <a href="" class="block text-neutral-300">The Bible Project</a>
+                        <a href="" class="block text-neutral-300">My Utmost for His Highest</a>
+                        <a href="" class="block text-neutral-300">The DSNTR</a>
+                    </div>
+                    <div>
+                        <HeadingDescription description="ABOUT US" class="mb-4"/>
+                        <a href="" class="block text-neutral-300">Regular Schedule</a>
+                        <a href="" class="block text-neutral-300">The Bible Project</a>
+                        <HeadingDescription description="SUNDAY SERVICE" class="my-4"/>
+                        <a href="" class="block text-neutral-300">10:00 AM to 11:30 AM</a>
+                    </div>
+                </div>
+                <HeadingDescription description="© 2025 Big Island Christian Church. All rights reserved." class="mt-4 mb-16 !text-base text-center"/>
+            </div>
+        </div>
+    </footer>
 </template>
