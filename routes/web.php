@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SermonsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,9 @@ Route::get('/prayer', function () {
 Route::get('/sermons', function () {
     return Inertia::render('Sermons');
 })->name('sermons');
+
+Route::get('/admin_sermons/create', [SermonsController::class, 'create'])->middleware(['auth', 'verified'])->name('sermons.create');
+
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
