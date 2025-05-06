@@ -71,4 +71,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function sermons()
+    {
+        return $this->hasMany(Sermons::class, 'created_by');
+    }
+
 }
