@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('image_path')->nullable();
-            $table->string('audio_path')->nullable();
+            $table->text('image_url')->nullable();
+            $table->text('audio_url')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
