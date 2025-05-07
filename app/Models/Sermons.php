@@ -13,8 +13,8 @@ class Sermons extends Model
     protected $fillable = [
         'title',
         'description',
-        'image_path',
-        'audio_path',
+        'image_url',
+        'audio_url',
         'created_by',
     ];
 

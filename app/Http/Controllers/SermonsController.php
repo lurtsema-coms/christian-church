@@ -24,27 +24,28 @@ class SermonsController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            // 'audio' => 'required|mimes:mp3,wav,aac,ogg,m4a', 
+            // 'audio' => 'required|mimes:mp3,wav,aac,ogg,audio/x-m4a', 
         ]);
     
         $image = $request->file('image');
         $audio = $request->file('audio');
 
         $imageName = time() . '_' . $image->getClientOriginalName();
-        $audioName = time() . '_' . $audio->getClientOriginalName();
         $image->move(public_path('photos'), $imageName);
-        $audio->move(public_path('audios'), $audioName);
+        $imageUrl = asset('photos/' . $imageName);
 
-    
-        // $audioPath = $request->file('audio')->store('public/audios');
-        // $audioUrl = Storage::url($audioPath); 
+        $audioName = time() . '_' . $audio->getClientOriginalName();
+        $audio->move(public_path('audios'), $audioName);
+        $audioUrl = asset('audios/' . $audioName);
+
+
     
         Sermons::create([
             'title' => $request->title,
             'description' => $request->description,
-            'image_url' => asset('photos/' . $imageName), 
+            'image_url' => $imageUrl,
 
-            // 'audio_url' => $audioUrl,
+            'audio_url' => $audioUrl,
             'created_by' => auth()->id(),   
         ]);
     
