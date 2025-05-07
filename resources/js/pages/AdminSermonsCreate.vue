@@ -4,9 +4,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
 import AdminSermonsCreateNew from '@/components/AdminSermonsCreateNew.vue';
 
-defineProps<{
-    categories: string[];
-}>();
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     {

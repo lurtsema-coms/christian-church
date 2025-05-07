@@ -16,9 +16,9 @@ import { router } from '@inertiajs/vue3';
                     type="search" 
                     placeholder="Search..."
                 >
-                <select  class="text-sm text-black w-full px-4 border border-slate-300 rounded-lg focus:border-none focus:outline-none focus:ring-2 focus:ring-[#1F4B55]" name="" id="">
+                <!-- <select  class="text-sm text-black w-full px-4 border border-slate-300 rounded-lg focus:border-none focus:outline-none focus:ring-2 focus:ring-[#1F4B55]" name="" id="">
                     <option value="">All Categories</option>
-                </select>
+                </select> -->
             </div>
         </div>
         <div class="overflow-x-auto custom-scrollbar">
