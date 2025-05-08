@@ -64,9 +64,22 @@ defineProps({
         </div>
 
         <!-- Pagination -->
-        <!-- <div class="mt-6 flex justify-end gap-2">
-            <Button v-if="sermons.prev_page_url" @click="router.visit(sermons.prev_page_url)">Previous</Button>
-            <Button v-if="sermons.next_page_url" @click="router.visit(sermons.next_page_url)">Next</Button>
-        </div> -->
+        <div class="flex items-center justify-between mt-4">
+            <Button 
+                :disabled="!sermons.prev_page_url" 
+                @click="router.get(sermons.prev_page_url, {}, { preserveState: true })">
+                Previous
+            </Button>
+            
+            <span class="text-gray-500">
+                Page {{ sermons.current_page }} of {{ sermons.last_page }}
+            </span>
+            
+            <Button 
+                :disabled="!sermons.next_page_url" 
+                @click="router.get(sermons.next_page_url, {}, { preserveState: true })">
+                Next
+            </Button>
+        </div>
     </div>
 </template>
