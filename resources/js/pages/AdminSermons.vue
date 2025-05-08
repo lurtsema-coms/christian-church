@@ -7,12 +7,16 @@
     import { Button } from '@/components/ui/button'
 import AdminSermonsTable from '@/components/AdminSermonsTable.vue';
 
-    const breadcrumbs: BreadcrumbItem[] = [
-        {
-            title: 'Sermons',
-            href: '/admin_sermons',
-        },
-    ];
+defineProps({
+    sermons: Object
+});
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Sermons',
+        href: '/admin_sermon',
+    },
+];
 </script>
 
 <template>
@@ -21,7 +25,7 @@ import AdminSermonsTable from '@/components/AdminSermonsTable.vue';
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl py-4 ">
             <div class="relative min-h-[100vh] flex-1 rounded-xl border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
-                <AdminSermonsTable/>
+                <AdminSermonsTable :sermons="sermons"/>
             </div>
         </div>
     </AppLayout>

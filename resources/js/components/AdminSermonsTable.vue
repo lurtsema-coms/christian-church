@@ -2,6 +2,11 @@
 import { Button } from '@/components/ui/button';
 import { ref, watch } from 'vue';
 import { router } from '@inertiajs/vue3';
+
+defineProps({
+    sermons: Object
+});
+
 </script>
 
 
@@ -35,17 +40,22 @@ import { router } from '@inertiajs/vue3';
                     </tr>
                 </thead>
                 <tbody class="border border-sidebar-border/70 dark:border-sidebar-border divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap"></td>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap"></td>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap"></td>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap"></td>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap"></td>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap"></td>
-                        <td class="px-6 py-3 text-sm text-gray-500 whitespace-nowrap">
+                    <tr v-for="sermon in sermons.data" :key="sermon.id">
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ sermon.title }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ sermon.description }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
+                            <img :src="sermon.image_url" alt="Image" class="h-16 w-auto rounded-md object-cover" />
+                        </td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
+                            <a v-if="sermon.audio_url" :href="sermon.audio_url" target="_blank" class="text-blue-600 underline">Listen</a>
+                            <span v-else class="text-gray-400 italic">N/A</span>
+                        </td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ new Date(sermon.created_at).toLocaleString() }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ sermon.creator?.name || 'Unknown' }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <Button>Edit</Button>
-                                <Button variant="destructive" @click="">Delete</Button>
+                                <Button variant="destructive">Delete</Button>
                             </div>
                         </td>
                     </tr>
@@ -53,5 +63,10 @@ import { router } from '@inertiajs/vue3';
             </table>
         </div>
 
+        <!-- Pagination -->
+        <!-- <div class="mt-6 flex justify-end gap-2">
+            <Button v-if="sermons.prev_page_url" @click="router.visit(sermons.prev_page_url)">Previous</Button>
+            <Button v-if="sermons.next_page_url" @click="router.visit(sermons.next_page_url)">Next</Button>
+        </div> -->
     </div>
 </template>

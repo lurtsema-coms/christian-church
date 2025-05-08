@@ -16,7 +16,7 @@ const mainNavItems: NavItem[] = [
     },
     {
         title: 'Sermons',
-        href: '/admin_sermons',
+        href: '/admin_sermon',
         icon: Volume2Icon,
     },
 ];

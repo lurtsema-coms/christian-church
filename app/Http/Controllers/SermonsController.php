@@ -13,6 +13,17 @@ use Inertia\Response;;
 
 class SermonsController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $query = Sermons::with('creator')->withoutTrashed();
+        $sermons = $query->paginate(10)->withQueryString();
+
+        return Inertia:: render ('AdminSermons',[
+            'sermons' => $sermons,
+        ]);
+    }
+
     public function create(): Response
     {
         return Inertia::render('AdminSermonsCreate');
