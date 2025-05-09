@@ -32,8 +32,11 @@
             </div>
 
             <!-- Line -->
-            <div class="w-full max-w-7xl h-0.5 border border-neutral-200 mx-auto my-16 -left-16 relative">
-                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="absolute z-0 -top-64 size-[35rem]">
+            <div class="z-10 w-full max-w-7xl h-0.5 border border-neutral-200 mx-auto my-16 -left-16 relative">
+            </div>
+
+            <div class="relative">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="absolute z-0 -top-72 size-[35rem]">
                     <path fill="#ECEDEE" d="M54.9,-52.1C67.9,-41.8,73.2,-20.9,74,0.7C74.7,22.4,70.9,44.7,57.8,54.6C44.7,64.4,22.4,61.7,6.7,55C-9,48.3,-17.9,37.6,-26.2,27.8C-34.5,17.9,-42.2,9,-44,-1.8C-45.7,-12.5,-41.5,-24.9,-33.2,-35.3C-24.9,-45.6,-12.5,-53.9,4.2,-58.1C20.9,-62.3,41.8,-62.5,54.9,-52.1Z" transform="translate(100 100)" />
                 </svg>
             </div>
