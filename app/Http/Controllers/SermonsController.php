@@ -16,7 +16,7 @@ class SermonsController extends Controller
 
     public function index(Request $request)
     {
-        $query = Sermons::with('creator')->withoutTrashed();
+        $query = Sermons::with('creator')->withoutTrashed()->latest();
         $sermons = $query->paginate(10)->withQueryString();
 
         return Inertia:: render ('AdminSermons',[

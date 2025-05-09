@@ -47,7 +47,7 @@ defineProps({
                             <img :src="sermon.image_url" alt="Image" class="h-16 w-auto rounded-md object-cover" />
                         </td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
-                            <a v-if="sermon.audio_url" :href="sermon.audio_url" target="_blank" class="text-blue-600 underline">Listen</a>
+                            <a v-if="sermon.audio_url" :href="sermon.audio_url" target="_blank" class="text-blue-600 underline">Listen Audio</a>
                             <span v-else class="text-gray-400 italic">N/A</span>
                         </td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ new Date(sermon.created_at).toLocaleString() }}</td>
