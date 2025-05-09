@@ -39,21 +39,21 @@
                             <Link href="/" :class="navigationMenuTriggerStyle()">
                             Home
                             </Link>
-                            <Link href="/" :class="navigationMenuTriggerStyle()">
+                            <Link href="/about-us" :class="navigationMenuTriggerStyle()">
                             About Us
                             </Link>
                             <Link href="/prayer" :class="navigationMenuTriggerStyle()">
                                 Prayer
                             </Link>
-                            <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
+                            <Link href="/online-giving" :class="navigationMenuTriggerStyle()">
                                 Online Giving
                             </Link>
                             <Link href="/sermons" :class="navigationMenuTriggerStyle()">
                                 Sermons
                             </Link>
-                            <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
+                            <!-- <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
                                 Ministries
-                            </Link>
+                            </Link> -->
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
@@ -94,17 +94,17 @@
             <div class="bg-[#16181d] w-full px-5">
                 <div class="grid w-full max-w-5xl grid-cols-2 gap-8 py-12 mx-auto md:grid-cols-3 lg:grid-cols-4">
                     <div>
-                        <HeadingDescription description="ABOUT US" class="mb-4"/>
+                        <HeadingDescription description="ABOUT US" class="mb-2"/>
                         <a href="" class="block text-neutral-300">What to Expect</a>
                         <a href="" class="block text-neutral-300">Our Beliefs</a>
                     </div>
                     <div>
-                        <HeadingDescription description="Get Involved" class="mb-4"/>
+                        <HeadingDescription description="Get Involved" class="mb-2"/>
                         <a href="" class="block text-neutral-300">Online Giving</a>
                         <a href="" class="block text-neutral-300">Submit Prayers</a>
                     </div>
                     <div>
-                        <HeadingDescription description="AFFILIATIONS" class="mb-4"/>
+                        <HeadingDescription description="AFFILIATIONS" class="mb-2"/>
                         <a href="" class="block text-neutral-300">The Bereans</a>
                         <a href="" class="block text-neutral-300">Answers in Genesis</a>
                         <a href="" class="block text-neutral-300">9Marks</a>
@@ -113,10 +113,10 @@
                         <a href="" class="block text-neutral-300">The DSNTR</a>
                     </div>
                     <div>
-                        <HeadingDescription description="ABOUT US" class="mb-4"/>
+                        <HeadingDescription description="ABOUT US" class="mb-2"/>
                         <a href="" class="block text-neutral-300">Regular Schedule</a>
                         <a href="" class="block text-neutral-300">The Bible Project</a>
-                        <HeadingDescription description="SUNDAY SERVICE" class="my-4"/>
+                        <HeadingDescription description="SUNDAY SERVICE" class="mt-4 mb-2"/>
                         <a href="" class="block text-neutral-300">10:00 AM to 11:30 AM</a>
                     </div>
                 </div>

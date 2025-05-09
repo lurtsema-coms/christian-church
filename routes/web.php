@@ -7,9 +7,17 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
 
+Route::get('/about-us', function () {
+    return Inertia::render('AboutUs');
+})->name('about-us');
+
 Route::get('/prayer', function () {
     return Inertia::render('Prayer');
 })->name('prayer');
+
+Route::get('/online-giving', function () {
+    return Inertia::render('OnlineGiving');
+})->name('online-giving');
 
 Route::get('/sermons', function () {
     return Inertia::render('Sermons');
