@@ -14,12 +14,22 @@ use Inertia\Response;;
 class SermonsController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
         $query = Sermons::with('creator')->withoutTrashed()->latest();
         $sermons = $query->paginate(10)->withQueryString();
 
         return Inertia:: render ('AdminSermons',[
+            'sermons' => $sermons,
+        ]);
+    }
+
+    public function display()
+    {
+        $query = Sermons::with('creator')->withoutTrashed()->latest();
+        $sermons = $query->paginate(10)->withQueryString();
+
+        return Inertia:: render ('Sermons',[
             'sermons' => $sermons,
         ]);
     }
