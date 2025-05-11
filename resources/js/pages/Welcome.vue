@@ -30,29 +30,23 @@
 <template>
     <Head title="Home" />
 
-    <div class="relative flex items-center justify-center h-screen mb-12 overflow-hidden lg:justify-end">
+    <div class="relative flex items-center justify-center py-40 mb-12 overflow-hidden">
+         <img src="/img/tropical-beach.webp" alt="tropical-beach-bg" class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply" />
+        
         <div class="relative z-30 max-w-5xl p-10 text-white rounded-xl">
-            <h1 class="mb-8 text-4xl italic font-bold text-center lg:text-left md:text-6xl lg:text-8xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-                Aloha and Welcome!
+            <div class="relative flex items-center justify-center mx-auto bg-white rounded-full w-52 h-52">
+                <img src="/img/church_logo.png" alt="church-logo" class="w-[7rem]" />
+            </div>
+            <h1 class="my-8 text-2xl font-bold text-center md:text-3xl lg:text-5xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+               Aloha and Welcome!
             </h1>
-            <p class="text-[#00457A] text-lg lg:text-xl font-bold">
-                We are grateful for your interest in Big Island Christian Church. We exist to Glorify God as Christ’s saints—<span class="underline">joyfully Gathering, willfully Growing, lavishly Giving, and courageously Going</span>—in the power and unity of the Gospel. That’s our G7 mission and ethos at Big Island Christian Church!
-            </p>
+            <p class="max-w-2xl text-lg font-bold text-center text-white lg:text-2xl">
+                Gathering, Growing, Giving, and Going in the power and unity of the Gospel — our G7 mission at Big Island Christian Church.            </p>
             <div class="flex justify-center gap-6 mt-8">
-                <Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">GIVE ONLINE</Button>
-                <Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LEARN MORE</Button>
+                <Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button>
+                <Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">WATCH A SERMON</Button>
             </div>
         </div>
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            class="absolute z-10 w-auto min-w-full min-h-full max-w-none"
-        >
-            <source src="/videos/beach.mp4" type="video/mp4"/>
-            Your browser does not support the video tag.
-        </video>
 
         <svg class="absolute bottom-0 z-10" width="100%" height="93px" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <g fill="#fff">

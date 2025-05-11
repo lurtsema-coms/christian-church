@@ -36,19 +36,19 @@
                 <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
                     <NavigationMenu>
                         <NavigationMenuList>
-                            <Link href="/" :class="navigationMenuTriggerStyle()">
-                            Home
+                            <Link href="/" :class="[navigationMenuTriggerStyle(), $page.url === '/' ? 'text-sky-700' : '' ]">
+                                Home
                             </Link>
-                            <Link href="/about-us" :class="navigationMenuTriggerStyle()">
-                            About Us
+                            <Link href="/about-us" :class="[navigationMenuTriggerStyle(), $page.url === '/about-us' ? 'text-sky-700' : '' ]">
+                                About Us
                             </Link>
-                            <Link href="/prayer" :class="navigationMenuTriggerStyle()">
+                            <Link href="/prayer" :class="[navigationMenuTriggerStyle(), $page.url === '/prayer' ? 'text-sky-700' : '' ]">
                                 Prayer
                             </Link>
-                            <Link href="/online-giving" :class="navigationMenuTriggerStyle()">
+                            <Link href="/online-giving" :class="[navigationMenuTriggerStyle(), $page.url === '/online-giving' ? 'text-sky-700' : '' ]">
                                 Online Giving
                             </Link>
-                            <Link href="/sermons" :class="navigationMenuTriggerStyle()">
+                            <Link href="/sermons" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '' ]">
                                 Sermons
                             </Link>
                             <!-- <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
