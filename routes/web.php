@@ -31,9 +31,9 @@ Route::post('/admin_sermons', [SermonsController::class, 'store'])->middleware([
 Route::delete('/admin_sermons/{sermon}', [SermonsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('sermons.destroy');
 
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/admin_accounts', function () {
+    return Inertia::render('AdminAccounts');
+})->middleware(['auth', 'verified'])->name('admin_accounts');
 
 Route::get('admin_sermons', function () {
     return Inertia::render('AdminSermons');

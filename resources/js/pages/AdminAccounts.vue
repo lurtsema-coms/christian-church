@@ -8,14 +8,14 @@
 
     const breadcrumbs: BreadcrumbItem[] = [
         {
-            title: 'Dashboard',
-            href: '/dashboard',
+            title: 'Accounts',
+            href: '/admin_accounts',
         },
     ];
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Accounts" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl">
