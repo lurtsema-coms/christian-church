@@ -72,4 +72,10 @@ class SermonsController extends Controller
     
         return redirect()->back()->with('success', 'Sermon uploaded successfully.');
     }
+
+    public function destroy(Sermons $sermon)
+    {
+        $sermon->delete();
+        return back()->with('success', 'Product deleted successfully');
+    }
 }

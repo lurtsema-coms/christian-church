@@ -7,6 +7,16 @@ defineProps({
     sermons: Object
 });
 
+
+const deleteProduct = (id) => {
+    if (confirm('Are you sure you want to delete this Sermon?')) {
+        router.delete(route('sermons.destroy', id), {
+            preserveState: true,
+            replace: true
+        });
+    }
+};
+
 </script>
 
 
@@ -55,7 +65,7 @@ defineProps({
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <Button>Edit</Button>
-                                <Button variant="destructive">Delete</Button>
+                                <Button variant="destructive" @click="deleteProduct(sermon.id)">Delete</Button>
                             </div>
                         </td>
                     </tr>
