@@ -71,6 +71,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return to_route('admin_accounts');
+        return to_route('admin_sermon');
     }
 }
