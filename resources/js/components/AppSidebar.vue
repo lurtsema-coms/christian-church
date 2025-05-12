@@ -5,7 +5,7 @@ import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, Speaker, Volume, Volume2Icon } from 'lucide-vue-next';
+import { BookOpen, Calendar, Folder, LayoutGrid, Speaker, Volume, Volume2Icon } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
@@ -15,10 +15,16 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
+        title: 'Calendar',
+        href: '/admin_calendar',
+        icon: Calendar,
+    },
+    {
         title: 'Sermons',
         href: '/admin_sermon',
         icon: Volume2Icon,
     },
+
 ];
 
 // const footerNavItems: NavItem[] = [

@@ -20,20 +20,19 @@ Route::get('/online-giving', function () {
     return Inertia::render('OnlineGiving');
 })->name('online-giving');
 
-// Route::get('/sermons', function () {
-//     return Inertia::render('Sermons');
-// })->name('sermons');
-
 Route::get('/sermons', [SermonsController::class, 'display'])->name('sermons');
 Route::get('/admin_sermon', [SermonsController::class, 'index'])->middleware(['auth', 'verified'])->name('admin_sermon');
 Route::get('/admin_sermons/create', [SermonsController::class, 'create'])->middleware(['auth', 'verified'])->name('sermons.create');
 Route::post('/admin_sermons', [SermonsController::class, 'store'])->middleware(['auth', 'verified']);
 Route::delete('/admin_sermons/{sermon}', [SermonsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('sermons.destroy');
 
-
 Route::get('/admin_accounts', function () {
     return Inertia::render('AdminAccounts');
 })->middleware(['auth', 'verified'])->name('admin_accounts');
+
+Route::get('/admin_calendar', function () {
+    return Inertia::render('AdminCalendar');
+})->middleware(['auth', 'verified'])->name('admin_calendar');
 
 // Route::get('admin_sermons', function () {
 //     return Inertia::render('AdminSermons');
