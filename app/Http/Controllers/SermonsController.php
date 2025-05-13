@@ -74,6 +74,14 @@ class SermonsController extends Controller
 
     }
 
+    public function edit($id): Response
+    {
+        $sermon = Sermons::findOrFail($id);
+        return Inertia::render('AdminSermonsEdit', [
+            'sermon' => $sermon
+        ]);
+    }
+
     public function destroy(Sermons $sermon)
     {
         $sermon->delete();
