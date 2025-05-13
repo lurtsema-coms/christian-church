@@ -70,7 +70,8 @@ class SermonsController extends Controller
             'created_by' => auth()->id(),   
         ]);
     
-        return redirect()->back()->with('success', 'Sermon uploaded successfully.');
+        return redirect()->route('admin_sermon')->with('success', 'Sermon uploaded successfully.');
+
     }
 
     public function destroy(Sermons $sermon)
