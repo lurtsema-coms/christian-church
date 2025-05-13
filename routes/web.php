@@ -24,8 +24,10 @@ Route::get('/sermons', [SermonsController::class, 'display'])->name('sermons');
 Route::get('/admin_sermon', [SermonsController::class, 'index'])->middleware(['auth', 'verified'])->name('admin_sermon');
 Route::get('/admin_sermons/create', [SermonsController::class, 'create'])->middleware(['auth', 'verified'])->name('sermons.create');
 Route::get('/admin_sermons/{sermon}/edit', [SermonsController::class, 'edit'])->middleware(['auth', 'verified'])->name('sermons.edit');
+Route::put('/admin_sermons/{sermon}/update', [SermonsController::class, 'update'])->middleware(['auth', 'verified'])->name('sermons.update');
 Route::post('/admin_sermons', [SermonsController::class, 'store'])->middleware(['auth', 'verified']);
 Route::delete('/admin_sermons/{sermon}', [SermonsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('sermons.destroy');
+
 
 Route::get('/admin_accounts', function () {
     return Inertia::render('AdminAccounts');

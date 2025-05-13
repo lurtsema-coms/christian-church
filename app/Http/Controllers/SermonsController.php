@@ -82,6 +82,48 @@ class SermonsController extends Controller
         ]);
     }
 
+
+    public function update(Request $request, Sermons $sermon)
+    {
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            // 'audio' => 'nullable',
+        ]);
+
+    
+        // Update title and description
+        $sermon->title = $validated['title'];
+        $sermon->description = $validated['description'];
+    
+
+        // Update image if a new image is provided
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('photos'), $imageName);
+            $sermon->image_url = asset('photos/' . $imageName);
+        }
+
+
+    
+        // Update audio if a new audio is provided
+        if ($request->hasFile('audio')) {
+            $audio = $request->file('audio');
+            $audioName = time() . '_' . $audio->getClientOriginalName();
+            $audio->move(public_path('audios'), $audioName);
+            $sermon->audio_url = asset('audios/' . $audioName);
+        }
+    
+        // Save the updated sermon
+        $sermon->save();
+    
+        return redirect()->route('admin_sermon')->with('success', 'Sermon updated successfully.');
+    }
+    
+
     public function destroy(Sermons $sermon)
     {
         $sermon->delete();
