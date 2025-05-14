@@ -62,7 +62,6 @@ class User extends Authenticatable
             'date_salvation' => 'date',
             'approved_at' => 'date',
             'date_baptism' => 'date',
-            'approval_status' => 'boolean',
             'password' => 'hashed',
         ];
     }
