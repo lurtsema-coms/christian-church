@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\SermonsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,9 +30,9 @@ Route::post('/admin_sermons', [SermonsController::class, 'store'])->middleware([
 Route::delete('/admin_sermons/{sermon}', [SermonsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('sermons.destroy');
 
 
-Route::get('/admin_accounts', function () {
-    return Inertia::render('AdminAccounts');
-})->middleware(['auth', 'verified'])->name('admin_accounts');
+Route::get('/admin_accounts',[AccountsController::class,'index'])->middleware(['auth', 'verified'])->name('admin_accounts');
+
+
 
 Route::get('/admin_calendar', function () {
     return Inertia::render('AdminCalendar');

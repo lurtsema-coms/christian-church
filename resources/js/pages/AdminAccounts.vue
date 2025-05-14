@@ -1,17 +1,21 @@
 <script setup lang="ts">
-    import AppLayout from '@/layouts/AppLayout.vue';
-    import { type BreadcrumbItem } from '@/types';
-    import { Head } from '@inertiajs/vue3';
-    import PlaceholderPattern from '../components/PlaceholderPattern.vue';
-    import { ref } from 'vue';
-    import { Button } from '@/components/ui/button'
+import AppLayout from '@/layouts/AppLayout.vue';
+import { type BreadcrumbItem } from '@/types';
+import { Head } from '@inertiajs/vue3';
+import { ref } from 'vue';
+import { Button } from '@/components/ui/button'
+import AdminAccountsTable from '@/components/AdminAccountsTable.vue';
 
-    const breadcrumbs: BreadcrumbItem[] = [
-        {
-            title: 'Accounts',
-            href: '/admin_accounts',
-        },
-    ];
+defineProps({
+    users: Object
+});
+
+const breadcrumbs: BreadcrumbItem[] = [
+    {
+        title: 'Accounts',
+        href: '/admin_accounts',
+    },
+];
 </script>
 
 <template>
@@ -19,18 +23,8 @@
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl">
-            <div class="grid gap-4 auto-rows-min md:grid-cols-3">
-                <div class="relative overflow-hidden border aspect-video rounded-xl border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative overflow-hidden border aspect-video rounded-xl border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative overflow-hidden border aspect-video rounded-xl border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-            </div>
-            <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
+            <div class="relative min-h-[100vh] flex-1  md:min-h-min">
+                <AdminAccountsTable :users="users" />
             </div>
         </div>
     </AppLayout>
