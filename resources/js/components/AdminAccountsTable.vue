@@ -26,6 +26,10 @@ const rejectUser = (id: number) =>{
     router.put(`/admin_accounts/${id}/reject`)
 };
 
+const deleteUser = (id: number) =>{
+    router.put(`/admin_accounts/${id}/delete`)
+};
+
 
 // onMounted(() => {
 // console.log('Logging approval_status and types:');
@@ -113,7 +117,29 @@ const rejectUser = (id: number) =>{
                                 </template>
                                 <template v-else-if="user.approval_status === 1">
                                     <Button>Edit</Button>
-                                    <Button variant="destructive">Delete</Button>
+                                    <Dialog>
+                                        <DialogTrigger>
+                                            <Button variant="destructive">Delete</Button>
+                                        </DialogTrigger>
+                                        <DialogContent>
+                                            <form class="space-y-6" >
+                                                <DialogHeader class="space-y-3">
+                                                    <DialogTitle>Are you sure you want to delete this account?</DialogTitle>
+                                                    <DialogDescription>
+                                                        Once this account is delete, you can no revert this change.
+                                                    </DialogDescription>
+                                                </DialogHeader>
+                                                <DialogFooter class="gap-2">
+                                                    <DialogClose as-child>
+                                                        <Button variant="secondary"> Cancel </Button>
+                                                    </DialogClose>
+                                                    <Button variant="destructive">
+                                                        <button type="submit" @click="deleteUser(user.id)">Delete</button>
+                                                    </Button>
+                                                </DialogFooter>
+                                            </form>
+                                        </DialogContent>
+                                    </Dialog>
                                 </template>
                             </div>
                         </td>

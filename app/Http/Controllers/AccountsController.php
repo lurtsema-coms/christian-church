@@ -38,4 +38,12 @@ class AccountsController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'User rejected successfully.');
     }
+
+    public function delete($id): RedirectResponse
+    {
+        $user = User::findOrFail($id);
+        $user->deleted_at = now();
+        $user->save();
+        return redirect()->back()->with('success', 'User deleted successfully.');
+    }
 }
