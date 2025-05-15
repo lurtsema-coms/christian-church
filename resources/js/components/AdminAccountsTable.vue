@@ -22,6 +22,11 @@ const approveUser = (id: number) => {
     router.put(`/admin_accounts/${id}/approve`);
 };
 
+const rejectUser = (id: number) =>{
+    router.put(`/admin_accounts/${id}/reject`)
+};
+
+
 // onMounted(() => {
 // console.log('Logging approval_status and types:');
 //     props.users.data.forEach((user: any) => {
@@ -44,7 +49,7 @@ const approveUser = (id: number) => {
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Role</th>
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Status</th>
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Created At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Approved At</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Updated At</th>
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
@@ -55,7 +60,7 @@ const approveUser = (id: number) => {
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'User' : 'N/A' }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ (user.approval_status == 0)? 'Pending' : (user.approval_status == 1 ? 'Accepted' : 'Rejected') }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.created_at }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.approved_at }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.updated_at }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <template v-if="user.approval_status === 0">
@@ -99,7 +104,7 @@ const approveUser = (id: number) => {
                                                         <Button variant="secondary"> Cancel </Button>
                                                     </DialogClose>
                                                     <Button variant="destructive">
-                                                        <button type="submit">Reject</button>
+                                                        <button type="submit" @click="rejectUser(user.id)">Reject</button>
                                                     </Button>
                                                 </DialogFooter>
                                             </form>

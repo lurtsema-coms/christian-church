@@ -25,8 +25,17 @@ class AccountsController extends Controller
     {
         $user = User::findOrFail($id);
         $user->approval_status = 1;
-        $user->approved_at = now();
+        $user->updated_at = now();
         $user->save();
         return redirect()->back()->with('success', 'User approved successfully.');
+    }
+
+    public function reject($id): RedirectResponse
+    {
+        $user = User::findOrFail($id);
+        $user->approval_status = 2;
+        $user->updated_at = now();
+        $user->save();
+        return redirect()->back()->with('success', 'User rejected successfully.');
     }
 }
