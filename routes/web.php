@@ -34,6 +34,8 @@ Route::get('/admin_accounts',[AccountsController::class,'index'])->middleware(['
 Route::put('/admin_accounts/{id}/approve',[AccountsController::class,'approve'])->middleware(['auth', 'verified']);
 Route::put('/admin_accounts/{id}/reject',[AccountsController::class,'reject'])->middleware(['auth', 'verified']);
 Route::put('/admin_accounts/{id}/delete',[AccountsController::class,'delete'])->middleware(['auth', 'verified']);
+Route::get('/admin_accounts/{account}/edit', [AccountsController::class, 'edit'])->middleware(['auth', 'verified'])->name('accounts.edit');
+
 
 
 Route::get('/admin_calendar', function () {

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
+use Inertia\Response;
 
 
 class AccountsController extends Controller
@@ -46,4 +47,9 @@ class AccountsController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'User deleted successfully.');
     }
+
+    public function edit($id): Response
+    {
+        return Inertia::render('AdminAccountsEdit');
+    } 
 }

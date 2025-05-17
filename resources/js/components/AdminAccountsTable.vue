@@ -30,6 +30,10 @@ const deleteUser = (id: number) =>{
     router.put(`/admin_accounts/${id}/delete`)
 };
 
+const editAccount = (account) =>{
+    router.get(route('accounts.edit', account.id));
+}
+
 
 // onMounted(() => {
 // console.log('Logging approval_status and types:');
@@ -116,7 +120,7 @@ const deleteUser = (id: number) =>{
                                     </Dialog>
                                 </template>
                                 <template v-else-if="user.approval_status === 1">
-                                    <Button>Edit</Button>
+                                    <Button @click="editAccount(user)">Edit</Button>
                                     <Dialog>
                                         <DialogTrigger>
                                             <Button variant="destructive">Delete</Button>
