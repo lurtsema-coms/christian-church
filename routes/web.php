@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\SermonsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,9 @@ Route::delete('/admin_sermons/{sermon}', [SermonsController::class, 'destroy'])-
 
 
 Route::get('/admin_accounts',[AccountsController::class,'index'])->middleware(['auth', 'verified'])->name('admin_accounts');
+
+// Prayer
+Route::resource('admin_prayer', PrayerController::class);
 
 
 

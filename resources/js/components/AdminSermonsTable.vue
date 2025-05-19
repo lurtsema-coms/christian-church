@@ -8,6 +8,7 @@ defineProps({
 });
 
 
+
 const editSermon = (sermon) =>{
     router.get(route('sermons.edit', sermon.id));
 }
@@ -26,7 +27,7 @@ const deleteProduct = (id) => {
 
 
 <template>
-    <div class="px-4 py-8 mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
+    <div class="px-4 py-8 mx-auto space-y-8 border rounded-xl border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between">
             <Button @click="router.visit('/admin_sermons/create')">Create</Button>
             <div class="relative p-1 overflow-hidden pointer-events-auto w-52 md:max-w-96">
@@ -53,16 +54,16 @@ const deleteProduct = (id) => {
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="border border-sidebar-border/70 dark:border-sidebar-border divide-y divide-gray-200">
+                <tbody class="border divide-y divide-gray-200 border-sidebar-border/70 dark:border-sidebar-border">
                     <tr v-for="sermon in sermons.data" :key="sermon.id">
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ sermon.title }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ sermon.description }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
-                            <img :src="sermon.image_url" alt="Image" class="h-16 w-auto rounded-md object-cover" />
+                            <img :src="sermon.image_url" alt="Image" class="object-cover w-auto h-16 rounded-md" />
                         </td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
                             <a v-if="sermon.audio_url" :href="sermon.audio_url" target="_blank" class="text-blue-600 underline">Listen Audio</a>
-                            <span v-else class="text-gray-400 italic">N/A</span>
+                            <span v-else class="italic text-gray-400">N/A</span>
                         </td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ new Date(sermon.created_at).toLocaleString() }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ sermon.creator?.name || 'Unknown' }}</td>
