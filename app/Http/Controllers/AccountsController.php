@@ -7,6 +7,7 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Response;
 
 
@@ -59,4 +60,29 @@ class AccountsController extends Controller
             'roles' => $roles,
         ]);
     } 
+
+    public function update(Request $request, User $account)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $account->id,
+            'role' => 'required|exists:roles,id',
+            'approval_status' => 'required|in:0,1,2',
+            'password' => ['nullable', 'confirmed', 'min:8'],
+
+        ]);
+
+        $account->name = $validated['name'];
+        $account->email = $validated['email'];
+        $account->role_id = $validated['role'];
+        $account->approval_status = $validated['approval_status'];
+
+        if ($request->filled('password')) {
+            $account->password = Hash::make($request->password);
+        }
+
+        $account->save();
+        
+        return redirect()->route('admin_accounts')->with('success', 'Account updated successfully.');
+    }
 }

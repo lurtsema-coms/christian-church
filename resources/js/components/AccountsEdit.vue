@@ -3,8 +3,11 @@ import { Button } from '@/components/ui/button';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
 import Password from '@/pages/settings/Password.vue';
+import { formatDate } from '@vueuse/core';
+import { usePage } from '@inertiajs/vue3';
 
 
+const { props: page } = usePage();
 const props = defineProps<{ account: any; roles: any[] }>();
 
 const fullName = ref(props.account.name)
@@ -14,11 +17,34 @@ const form = ref({
     email: props.account.email,
     approval_status: props.account.approval_status,
     role: props.account.role_id,
+    password: '',
+    password_confirmation: '',
 });
 
-// const submit = () = {
-//     const formData = new FormData();
-// };
+const submit = () =>{
+    const formData = new FormData();
+    formData.append('_method','put');
+    formData.append('name', form.value.name)
+    formData.append('email', form.value.email)
+    formData.append('role', form.value.role)
+    formData.append('approval_status', form.value.approval_status)
+
+    
+    if (form.value.password && form.value.password_confirmation) {
+        formData.append('password', form.value.password);
+        formData.append('password_confirmation', form.value.password_confirmation);
+    }
+
+
+    router.post(route('accounts.update', { account: props.account.id }), formData, {
+    preserveScroll: true,
+    onSuccess: () => {
+        // Optional: Redirect or show success message
+    },
+});
+};
+
+
 
 </script>
 
@@ -34,55 +60,67 @@ const form = ref({
         </a>
 
         <div class="pb-8">
-        <form @submit.prevent="">
+        <form @submit.prevent="submit">
             <div class="max-w-4xl m-auto space-y-4">
                 <div class="flex flex-col mb-6 gap-4 sm:flex-row">
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                        <p class="font-medium text-gray-500">Full Name <span class="text-red-400">*</span></p>
-                        <input
-                            v-model ="form.name"
-                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                            type="text"
-                            required
-                            placeholder="Enter the title here"
-                        />
+                            <p class="font-medium text-gray-500">Full Name <span class="text-red-400">*</span></p>
+                            <input
+                                v-model ="form.name"
+                                class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                                type="text"
+                                required
+                                placeholder="Enter the title here"
+                            />
+                            <p v-if="page.errors.name" class="text-sm text-red-500 mt-1">
+                                {{ page.errors.name }}
+                            </p>
                         </div>
                     </div>
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                        <p class="font-medium text-gray-500">Email <span class="text-red-400">*</span></p>
-                        <input
-                            v-model="form.email"
-                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                            type="text"
-                            required
-                            placeholder="Enter the title here"
-                        />
+                            <p class="font-medium text-gray-500">Email <span class="text-red-400">*</span></p>
+                            <input
+                                v-model="form.email"
+                                class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                                type="text"
+                                required
+                                placeholder="Enter the title here"
+                            />
+                            <p v-if="page.errors.email" class="text-sm text-red-500 mt-1">
+                                {{ page.errors.email }}
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="flex flex-col mb-6 gap-4 sm:flex-row">
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                        <p class="font-medium text-gray-500">New Password <span class="text-red-400">*</span></p>
-                        <input
-                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                            type="text"
-                            required
-                            placeholder="Enter the title here"
-                        />
+                            <p class="font-medium text-gray-500">New Password <span class="text-red-400">*</span></p>
+                            <input
+                                v-model="form.password"
+                                class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                                type="password"
+                                placeholder="Enter the title here"
+                            />
+                            <p v-if="page.errors.password" class="text-sm text-red-500 mt-1">
+                                {{ page.errors.password }}
+                            </p>
                         </div>
                     </div>
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                        <p class="font-medium text-gray-500">Confirm Password <span class="text-red-400">*</span></p>
-                        <input
-                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                            type="text"
-                            required
-                            placeholder="Enter the title here"
-                        />
+                            <p class="font-medium text-gray-500">Confirm Password <span class="text-red-400">*</span></p>
+                            <input
+                                v-model="form.password_confirmation"
+                                class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                                type="password"
+                                placeholder="Enter the title here"
+                            />
+                            <p v-if="page.errors.password_confirmation" class="text-sm text-red-500 mt-1">
+                                {{ page.errors.password_confirmation }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -98,6 +136,9 @@ const form = ref({
                         {{ role.title }}
                         </option>
                     </select>
+                    <p v-if="page.errors.role" class="text-sm text-red-500 mt-1">
+                        {{ page.errors.role }}
+                    </p>
                 </div>
                 <div class="flex-1 space-y-2">
                     <label class="font-medium text-gray-500">Status <span class="text-red-400">*</span></label>
@@ -109,6 +150,9 @@ const form = ref({
                         <option :value="1">Approved</option>
                         <option :value="2">Rejected</option>
                     </select>
+                    <p v-if="page.errors.approval_status" class="text-sm text-red-500 mt-1">
+                        {{ page.errors.approval_status }}
+                    </p>
                 </div>
             </div>
 

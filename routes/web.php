@@ -36,6 +36,7 @@ Route::put('/admin_accounts/{id}/approve',[AccountsController::class,'approve'])
 Route::put('/admin_accounts/{id}/reject',[AccountsController::class,'reject'])->middleware(['auth', 'verified']);
 Route::put('/admin_accounts/{id}/delete',[AccountsController::class,'delete'])->middleware(['auth', 'verified']);
 Route::get('/admin_accounts/{account}/edit', [AccountsController::class, 'edit'])->middleware(['auth', 'verified'])->name('accounts.edit');
+Route::put('/admin_accounts/{account}/update', [AccountsController::class, 'update'])->middleware(['auth', 'verified'])->name('accounts.update');
 
 // Prayer
 Route::resource('admin_prayer', PrayerController::class);
