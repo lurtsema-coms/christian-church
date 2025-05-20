@@ -2,7 +2,23 @@
 import { Button } from '@/components/ui/button';
 import { ref } from 'vue';
 import { router } from '@inertiajs/vue3';
+import Password from '@/pages/settings/Password.vue';
 
+
+const props = defineProps<{ account: any; roles: any[] }>();
+
+const fullName = ref(props.account.name)
+
+const form = ref({
+    name: props.account.name,
+    email: props.account.email,
+    approval_status: props.account.approval_status,
+    role: props.account.role_id,
+});
+
+// const submit = () = {
+//     const formData = new FormData();
+// };
 
 </script>
 
@@ -18,69 +34,84 @@ import { router } from '@inertiajs/vue3';
         </a>
 
         <div class="pb-8">
-        <form>
+        <form @submit.prevent="">
             <div class="max-w-4xl m-auto space-y-4">
-                <!-- Title -->
-                <div class="flex flex-col gap-4 sm:flex-row">
-                <div class="flex-1 space-y-2">
-                    <div class="space-y-2">
-                    <p class="font-medium text-gray-500">Title <span class="text-red-400">*</span></p>
-                    <input
-                        class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                        type="text"
-                        required
-                        placeholder="Enter the title here"
-                    />
+                <div class="flex flex-col mb-6 gap-4 sm:flex-row">
+                    <div class="flex-1 space-y-2">
+                        <div class="space-y-2">
+                        <p class="font-medium text-gray-500">Full Name <span class="text-red-400">*</span></p>
+                        <input
+                            v-model ="form.name"
+                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                            type="text"
+                            required
+                            placeholder="Enter the title here"
+                        />
+                        </div>
+                    </div>
+                    <div class="flex-1 space-y-2">
+                        <div class="space-y-2">
+                        <p class="font-medium text-gray-500">Email <span class="text-red-400">*</span></p>
+                        <input
+                            v-model="form.email"
+                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                            type="text"
+                            required
+                            placeholder="Enter the title here"
+                        />
+                        </div>
                     </div>
                 </div>
+                <div class="flex flex-col mb-6 gap-4 sm:flex-row">
+                    <div class="flex-1 space-y-2">
+                        <div class="space-y-2">
+                        <p class="font-medium text-gray-500">New Password <span class="text-red-400">*</span></p>
+                        <input
+                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                            type="text"
+                            required
+                            placeholder="Enter the title here"
+                        />
+                        </div>
+                    </div>
+                    <div class="flex-1 space-y-2">
+                        <div class="space-y-2">
+                        <p class="font-medium text-gray-500">Confirm Password <span class="text-red-400">*</span></p>
+                        <input
+                            class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                            type="text"
+                            required
+                            placeholder="Enter the title here"
+                        />
+                        </div>
+                    </div>
                 </div>
 
-            <!-- Description -->
-            <div>
+            <div class="flex flex-col mb-6 gap-4 sm:flex-row">
                 <div class="flex-1 space-y-2">
-                <p class="font-medium text-gray-500">Description <span class="text-red-400">*</span></p>
-                <textarea
-                    class="text-md w-full p-4 border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                    cols="50"
-                    rows="5"
-                    required
-                    placeholder="Provide a detailed description"
-                ></textarea>
+                    <label class="font-medium text-gray-500">Role <span class="text-red-400">*</span></label>
+                    <select
+                        v-model="form.role"
+                        class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                    >
+                        <option v-for="role in props.roles" :key="role.id" :value="role.id">
+                        {{ role.title }}
+                        </option>
+                    </select>
+                </div>
+                <div class="flex-1 space-y-2">
+                    <label class="font-medium text-gray-500">Status <span class="text-red-400">*</span></label>
+                    <select
+                        v-model="form.approval_status"
+                        class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
+                    >
+                        <option :value="0">Pending</option>
+                        <option :value="1">Approved</option>
+                        <option :value="2">Rejected</option>
+                    </select>
                 </div>
             </div>
 
-            <!-- Image and Audio Upload -->
-            <div class="flex flex-col gap-4 sm:flex-row">
-                <!-- Image Upload -->
-                <div class="flex-1 space-y-2">
-                <label class="font-medium text-gray-500">Upload New Image <span class="text-red-400">*</span></label>
-                <input
-                    class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                    type="file"
-                    accept="image/*"
-                />
-                </div>
-                <!-- Audio Upload -->
-                <div class="flex-1 space-y-2">
-                <label class="font-medium text-gray-500">Upload New Audio <span class="text-red-400">*</span></label>
-                <input
-                    class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
-                    type="file"
-                    accept="audio/*"
-                />
-                </div>
-            </div>
-
-            <!-- Current Media -->
-            <div class="flex flex-col gap-4 sm:flex-row">
-                <div class="flex-1 space-y-2">
-                <label class="text-xs italic text-gray-500">Current Image:</label>
-                </div>
-                <div class="flex-1 space-y-2">
-                <label class="text-xs italic text-gray-500">Current Audio:</label>
-
-                </div>
-            </div>
 
             <!-- Submit Button -->
             <div class="!mt-8 text-right">

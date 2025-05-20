@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Http\RedirectResponse;
@@ -50,6 +51,12 @@ class AccountsController extends Controller
 
     public function edit($id): Response
     {
-        return Inertia::render('AdminAccountsEdit');
+        $account = User::findOrFail($id);
+        $roles = Role::select('id', 'title')->get();
+
+        return Inertia::render('AdminAccountsEdit',[
+            'account' => $account,
+            'roles' => $roles,
+        ]);
     } 
 }

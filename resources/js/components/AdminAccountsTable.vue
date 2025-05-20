@@ -66,9 +66,14 @@ const editAccount = (account) =>{
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.name }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.email }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'User' : 'N/A' }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ (user.approval_status == 0)? 'Pending' : (user.approval_status == 1 ? 'Accepted' : 'Rejected') }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.created_at }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.updated_at }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap":class="{
+                            'text-orange-500': user.approval_status == 0,
+                            'text-green-600': user.approval_status == 1,
+                            'text-red-500': user.approval_status == 2
+                        }"
+                        >{{ (user.approval_status == 0)? 'Pending' : (user.approval_status == 1 ? 'Accepted' : 'Rejected') }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap"> {{ new Date(user.created_at).toISOString().split('T')[0] }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">  {{ new Date(user.updated_at).toISOString().split('T')[0] }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <template v-if="user.approval_status === 0">
