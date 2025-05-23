@@ -45,7 +45,7 @@ class AccountsController extends Controller
     public function delete($id): RedirectResponse
     {
         $user = User::findOrFail($id);
-        $user->deleted_at = now();
+        $user->approval_status = 2;
         $user->save();
         return redirect()->back()->with('success', 'User deleted successfully.');
     }
