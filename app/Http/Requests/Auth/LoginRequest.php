@@ -49,6 +49,22 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        $user = Auth::user();
+
+        if ($user->approval_status === 0) {
+            Auth::logout(); // Ensure they’re logged out
+            throw ValidationException::withMessages([
+                'email' => 'Your account is pending approval.',
+            ]);
+        }
+
+        if ($user->approval_status !== 1) {
+            Auth::logout();
+            throw ValidationException::withMessages([
+                'email' => 'Your account has been rejected.',
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 
