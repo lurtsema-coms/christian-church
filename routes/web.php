@@ -5,6 +5,7 @@ use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\SermonsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Prayer;
 
 Route::get('/', function () {
     return Inertia::render('Welcome');
@@ -13,9 +14,9 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 })->name('about-us');
-
+    
 Route::get('/prayer', function () {
-    return Inertia::render('Prayer');
+    return Inertia::render('Prayer', ['prayers' => Prayer::approved()->get()]);
 })->name('prayer');
 
 Route::get('/online-giving', function () {

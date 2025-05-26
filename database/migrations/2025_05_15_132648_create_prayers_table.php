@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('prayers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('prayer_title');
             $table->string('name');
             $table->string('email');
             $table->string('prayer_category');
             $table->text('prayer_details');
             $table->boolean('is_approved')->nullable();
+            $table->timestamps();
         });
     }
 

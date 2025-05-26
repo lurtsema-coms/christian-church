@@ -13,7 +13,9 @@ class PrayerController extends Controller
      */
     public function index()
     {
-        return Inertia::render('AdminPrayer');
+        return Inertia::render('AdminPrayer', [
+            'prayers' => Prayer::get(),
+        ]);
     }
 
     /**
@@ -29,7 +31,17 @@ class PrayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'prayer_title' => 'required|string|max:255',
+            'prayer_category' => 'required|string|max:255',
+            'prayer_details' => 'required|string|max:1000',
+        ]);
+
+        Prayer::create($validated);
+
+        return redirect()->back()->with('success', 'Prayer submitted successfully.');
     }
 
     /**
@@ -51,9 +63,13 @@ class PrayerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prayer $prayer)
+    public function update(Request $request, $admin_prayer)
     {
-        //
+        $prayer = Prayer::findOrFail($admin_prayer); // Use findOrFail to throw a 404 if not found
+        $prayer->is_approved = $prayer->is_approved ? 0 : 1;
+        $prayer->save();
+
+        return back()->with('success', 'Prayer status updated successfully.');
     }
 
     /**

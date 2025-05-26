@@ -2,8 +2,62 @@
     import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
     import Input from '@/components/ui/input/Input.vue';
     import Textarea from '@/components/ui/textarea/Textarea.vue';
+    import { useForm, usePage } from '@inertiajs/vue3';
+    import { computed, ref } from 'vue';
+    import Autoplay from 'embla-carousel-autoplay'
+    import { Card, CardContent } from '@/components/ui/card'
+    import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 
-    defineOptions({ layout: AppLayout});
+    interface Flash {
+        success: string | null;
+        error: string | null;
+    }
+
+    defineOptions({ layout: AppLayout });
+    const props = defineProps<{
+        prayers: {
+            id: number;
+            name: string;
+            email: string;
+            prayer_title: string;
+            prayer_category: string;    
+            prayer_details: string;
+            created_at: string;
+            is_approved: boolean;
+        }[];
+    }>();
+
+    console.log(props);
+
+    const plugin = Autoplay({
+        delay: 5000,
+        stopOnMouseEnter: true,
+        stopOnInteraction: false,
+    });
+
+    const form = useForm({
+        name: '',
+        email: '',
+        prayer_title: '',
+        prayer_category: '',
+        prayer_details: '',
+    });
+
+    const flash = computed<Flash>(() => usePage().props.flash as Flash);
+    const successMessage = ref<string | null>('');
+
+    const submit = () => {
+        form.post('/admin_prayer', {
+            preserveScroll: true,
+            onSuccess: () => {
+                successMessage.value = flash.value.success;
+                setTimeout(() => {
+                    successMessage.value = null;
+                }, 4000);
+                form.reset();
+            },
+        });
+    };
 </script>
 
 <template>
@@ -16,19 +70,53 @@
         <div class="relative z-10 flex flex-col px-5 mt-12">
             <div class="z-10">
                 <Heading title="Prayer" class="!text-[#00457A] text-center"/>
-                <div class="w-full max-w-3xl p-5 mx-auto mt-10 bg-white border shadow-sm rounded-xl md:p-10 border-neutral-300">
-                    <Heading title="A traffic ticket in Kona" class="!text-[#00457A] text-center !font-semibold !text-2xl"/>
-                    <img src="/img/bible.webp" alt="" class="mx-auto mt-8 rounded-md max-w-80">
-                    <p class="mt-10 text-neutral-600">
-                        We got a traffic ticket from a police officer in Kona on Feb 5 while we tried to get to a car check-up. Due to a misunderstanding of culture and law, we need to figure out what to do with the ticket if we are in Taiwan. Please pray for us that God works all things together for our goodness to learn something and take care of any consequences or responsibility God has for us ❤️🙏
-                    </p>
-                    <p class="mt-10 font-bold text-center text-sky-600">
-                        Tom and Abby from Taiwan
-                    </p>
-                    <p class="mt-2 text-center text-neutral-600">
-                        02-10-2025
-                    </p>
+                <div v-if="!prayers || prayers.length === 0" class="mt-8 text-lg text-center text-gray-500">
+                    No prayers to display yet.
                 </div>
+                <Carousel
+                    v-else
+                    class="relative w-full max-w-3xl mx-auto mt-8"
+                    :plugins="[plugin]"
+                    @mouseenter="plugin.stop"
+                    @mouseleave="[plugin.reset(), plugin.play()]"
+                >
+                    <CarouselContent>
+                        <CarouselItem
+                            v-for="(prayer, index) in prayers"
+                            :key="`${prayer.prayer_title}-${index}`"
+                        >
+                            <div class="h-full p-1">
+                                <Card class="h-full">
+                                    <CardContent class="flex flex-col items-center p-5 md:p-10 ">
+                                        <Heading
+                                            :title="prayer.prayer_title"
+                                            class="!text-[#00457A] text-center !font-semibold !text-2xl"
+                                        />
+                                        <img
+                                            src="/img/bible.webp"
+                                            alt=""
+                                            class="mx-auto mt-8 rounded-md sm:max-w-80"
+                                        />
+                                        <p class="mt-10 text-center text-neutral-600">
+                                            {{ prayer.prayer_details }}
+                                        </p>
+                                        <div class="mt-10 text-center">
+                                            <p class="font-bold text-sky-600">
+                                                {{ prayer.name }}
+                                            </p>
+                                            <p class="mt-2 text-neutral-600">
+                                                {{ new Date(prayer.created_at).toISOString().split('T')[0] }}
+                                            </p>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        </CarouselItem>
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
+
             </div>
 
             <!-- Line -->
@@ -43,21 +131,40 @@
 
             <div class="z-10">
                 <Heading title="Submit a Prayer Request" class="!text-[#00457A] text-center !font-semibold !text-2xl"/>
-                <div class="grid max-w-2xl gap-4 mx-auto mt-8 mb-10 sm:grid-cols-2">
-                    <Input type="text" placeholder="Name" class="sm:h-12 placeholder:text-lg" />
-                    <Input type="email" placeholder="Email Address" class="sm:h-12 placeholder:text-lg" />
-                    <Input type="text" placeholder="Prayer Title" class="sm:h-12 placeholder:text-lg" />
-                    <Input type="text" placeholder="Prayer Category" class="sm:h-12 placeholder:text-lg" />
-                    <Textarea placeholder="Prayer Details" class="sm:col-span-2 text-md sm:text-sm h-36 placeholder:text-lg" />
-                    <div class="flex justify-end sm:col-span-2">
-                        <Button class="bg-[#336699] text-white font-bold px-8 py-5 md:text-lg">Submit</Button>
+                <form @submit.prevent="submit">
+                    <div class="grid max-w-2xl gap-4 mx-auto mt-8 mb-10 sm:grid-cols-2">
+                        <div>
+                            <Input v-model="form.name" type="text" placeholder="Name" class="sm:h-12 placeholder:text-lg" />
+                            <div v-if="form.errors.name" class="relative mt-1 text-red-500">{{ form.errors.name }}</div>
+                        </div>
+                        <div>
+                            <Input v-model="form.email" type="email" placeholder="Email Address" class="sm:h-12 placeholder:text-lg" />
+                            <div v-if="form.errors.email" class="relative mt-1 text-red-500">{{ form.errors.email }}</div>
+                        </div>
+                        <div>
+                            <Input v-model="form.prayer_title" type="text" placeholder="Prayer Title" class="sm:h-12 placeholder:text-lg" />
+                            <div v-if="form.errors.prayer_title" class="relative mt-1 text-red-500">{{ form.errors.prayer_title }}</div>
+                        </div>
+                        <div>
+                            <Input v-model="form.prayer_category" type="text" placeholder="Prayer Category" class="sm:h-12 placeholder:text-lg" />
+                            <div v-if="form.errors.prayer_category" class="relative mt-1 text-red-500">{{ form.errors.prayer_category }}</div>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <Textarea v-model="form.prayer_details" placeholder="Prayer Details" class="text-md sm:text-sm h-36 placeholder:text-lg" />
+                            <div v-if="form.errors.prayer_details" class="relative mt-1 text-red-500">{{ form.errors.prayer_details }}</div>
+                        </div>
+                        <div class="flex flex-col justify-end sm:col-span-2">
+                            <div class="flex justify-end">
+                                <Button :disabled="form.processing" class="bg-[#336699] text-white font-bold px-8 py-5 md:text-lg">Submit</Button>
+                            </div>
+                            <div v-if="successMessage" class="mt-2 font-semibold text-right text-green-600">
+                                {{ successMessage }}
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-
-
         <br>
     </div>
-
 </template>
