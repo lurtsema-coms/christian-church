@@ -52,29 +52,29 @@ const editAccount = (account) =>{
             <table class="min-w-full">
                 <thead class="border border-sidebar-border/70 dark:border-sidebar-border">
                     <tr>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Name</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Email</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Role</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Status</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Created At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Updated At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase whitespace-nowrap">Actions</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Name</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Email</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Role</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Status</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Created At</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Updated At</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="border border-sidebar-border/70 dark:border-sidebar-border divide-y divide-gray-200">
                     <tr v-for="user in users.data" :key="user.id">
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.name }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.email }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">{{ user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'User' : 'N/A' }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap":class="{
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.name }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.email }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'User' : 'N/A' }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap":class="{
                             'text-orange-500': user.approval_status == 0,
                             'text-green-600': user.approval_status == 1,
                             'text-red-500': user.approval_status == 2
                         }"
                         >{{ (user.approval_status == 0)? 'Pending' : (user.approval_status == 1 ? 'Accepted' : 'Rejected') }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap"> {{ new Date(user.created_at).toISOString().split('T')[0] }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">  {{ new Date(user.updated_at).toISOString().split('T')[0] }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 whitespace-nowrap">
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap"> {{ new Date(user.created_at).toISOString().split('T')[0] }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">  {{ new Date(user.updated_at).toISOString().split('T')[0] }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <template v-if="user.approval_status === 0">
                                     <Dialog>
