@@ -50,7 +50,7 @@ const submit = () =>{
 
 <template>
     <div class="px-4 py-8 mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
-        <a class="inline-block mb-4 font-medium text-gray-500" href="/admin_accounts">
+        <a class="inline-block mb-4 font-medium text-gray-500 dark:text-white" href="/admin_accounts">
         <span class="flex items-center space-x-2 cursor-pointer hover:opacity-70">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -65,7 +65,7 @@ const submit = () =>{
                 <div class="flex flex-col mb-6 gap-4 sm:flex-row">
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                            <p class="font-medium text-gray-500">Full Name <span class="text-red-400">*</span></p>
+                            <p class="font-medium text-gray-500 dark:text-white">Full Name <span class="text-red-400">*</span></p>
                             <input
                                 v-model ="form.name"
                                 class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
@@ -80,7 +80,7 @@ const submit = () =>{
                     </div>
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                            <p class="font-medium text-gray-500">Email <span class="text-red-400">*</span></p>
+                            <p class="font-medium text-gray-500 dark:text-white">Email <span class="text-red-400">*</span></p>
                             <input
                                 v-model="form.email"
                                 class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
@@ -97,7 +97,7 @@ const submit = () =>{
                 <div class="flex flex-col mb-6 gap-4 sm:flex-row">
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                            <p class="font-medium text-gray-500">New Password <span class="text-red-400">*</span></p>
+                            <p class="font-medium text-gray-500 dark:text-white">New Password <span class="text-red-400">*</span></p>
                             <input
                                 v-model="form.password"
                                 class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
@@ -111,7 +111,7 @@ const submit = () =>{
                     </div>
                     <div class="flex-1 space-y-2">
                         <div class="space-y-2">
-                            <p class="font-medium text-gray-500">Confirm Password <span class="text-red-400">*</span></p>
+                            <p class="font-medium text-gray-500 dark:text-white">Confirm Password <span class="text-red-400">*</span></p>
                             <input
                                 v-model="form.password_confirmation"
                                 class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
@@ -127,7 +127,7 @@ const submit = () =>{
 
             <div class="flex flex-col mb-6 gap-4 sm:flex-row">
                 <div class="flex-1 space-y-2">
-                    <label class="font-medium text-gray-500">Role <span class="text-red-400">*</span></label>
+                    <label class="font-medium text-gray-500 dark:text-white">Role <span class="text-red-400">*</span></label>
                     <select
                         v-model="form.role"
                         class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
@@ -141,7 +141,7 @@ const submit = () =>{
                     </p>
                 </div>
                 <div class="flex-1 space-y-2">
-                    <label class="font-medium text-gray-500">Status <span class="text-red-400">*</span></label>
+                    <label class="font-medium text-gray-500 dark:text-white">Status <span class="text-red-400">*</span></label>
                     <select
                         v-model="form.approval_status"
                         class="text-md w-full p-[0.63rem] border text-black border-slate-300 rounded-lg focus:outline-none focus:ring-0 focus:border-[#1F4B55]"
