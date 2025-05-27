@@ -23,7 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Sermons" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex flex-col flex-1 h-full gap-4 py-4 rounded-xl ">
+        <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl ">
             <div class="relative min-h-[100vh] flex-1 rounded-xl border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
                 <AdminSermonsTable :sermons="sermons"/>
             </div>
