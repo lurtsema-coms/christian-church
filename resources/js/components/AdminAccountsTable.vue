@@ -47,9 +47,9 @@ const editAccount = (account) =>{
 
 
 <template>
-    <div class="px-4 py-8 mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
-        <div class="overflow-x-auto custom-scrollbar">
-            <table class="min-w-full">
+    <div class="px-4 py-8 max-w-[380px] mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
+        <div class="overflow-x-auto">
+            <table class="w-full">
                 <thead class="border border-sidebar-border/70 dark:border-sidebar-border">
                     <tr>
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Name</th>

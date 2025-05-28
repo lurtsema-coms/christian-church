@@ -27,22 +27,15 @@ const deleteProduct = (id) => {
 
 
 <template>
-    <div class="px-4 py-8 mx-auto space-y-8 border rounded-xl border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
+    <div class="px-4 py-8 max-w-[380px] mx-auto space-y-8 border rounded-xl border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
         <div class="flex flex-wrap items-center justify-between">
             <Button @click="router.visit('/admin_sermons/create')">Create</Button>
             <div class="relative p-1 overflow-hidden pointer-events-auto w-52 md:max-w-96">
-                <!-- <input 
-                    class="text-sm text-black w-full px-4 border border-slate-300 rounded-lg focus:border-none focus:outline-none focus:ring-2 focus:ring-[#1F4B55]" 
-                    type="search" 
-                    placeholder="Search..."
-                > -->
-                <!-- <select  class="text-sm text-black w-full px-4 border border-slate-300 rounded-lg focus:border-none focus:outline-none focus:ring-2 focus:ring-[#1F4B55]" name="" id="">
-                    <option value="">All Categories</option>
-                </select> -->
+
             </div>
         </div>
-        <div class="overflow-x-auto custom-scrollbar">
-            <table class="min-w-full">
+        <div class="overflow-x-auto">
+            <table class="w-full">
                 <thead class="border border-sidebar-border/70 dark:border-sidebar-border">
                     <tr>
                         <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Title</th>
