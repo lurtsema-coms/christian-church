@@ -57,14 +57,14 @@
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
-                <div class="relative flex items-center gap-2">
+                <!-- <div class="relative flex items-center gap-2">
                     <div class="flex items-center justify-center rounded-full bg-white shadow-[#F7EDE2] border-red-400 border shadow-sm w-11 h-11">
                         <img src="/icons/heart.png" alt="" class="w-8">
                     </div>
                     <div class="flex items-center justify-center rounded-full bg-white shadow-[#F7EDE2] border-sky-400 border shadow-sm w-11 h-11">
                         <img src="/icons/loud-speaker.png" alt="" class="w-8">
                     </div>
-                </div>
+                </div> -->
             </div>
         </nav>
     </div>
@@ -97,6 +97,7 @@
                         <HeadingDescription description="ABOUT US" class="mb-2"/>
                         <a href="" class="block text-neutral-300">What to Expect</a>
                         <a href="" class="block text-neutral-300">Our Beliefs</a>
+                        <a href="/login" class="block text-neutral-300 underline mt-0 sm:mt-16">Login Account</a>
                     </div>
                     <div>
                         <HeadingDescription description="Get Involved" class="mb-2"/>

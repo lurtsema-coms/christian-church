@@ -44,7 +44,7 @@
                 Gathering, Growing, Giving, and Going in the power and unity of the Gospel — our G7 mission at Big Island Christian Church.            </p>
             <div class="flex justify-center gap-6 mt-8">
                 <Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button>
-                <Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMON</Button>
+                <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMON</Button></a>
             </div>
         </div>
 
@@ -100,7 +100,7 @@
         </div>
     </div>
         <br>
-        <Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO A SERMON</Button>
+        <a href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO A SERMON</Button></a>
     </div>
 
     <div class="relative px-5 py-16 overflow-hidden">
