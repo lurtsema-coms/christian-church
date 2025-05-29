@@ -51,9 +51,9 @@
                             <Link href="/sermons" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '' ]">
                                 Sermons
                             </Link>
-                            <!-- <Link href="/docs/introduction" :class="navigationMenuTriggerStyle()">
-                                Ministries
-                            </Link> -->
+                            <a href="https://www.unstoppablekidsbooks.com/blog" :class="navigationMenuTriggerStyle()">
+                                Blog
+                            </a>
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>

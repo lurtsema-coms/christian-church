@@ -44,7 +44,7 @@
                 Gathering, Growing, Giving, and Going in the power and unity of the Gospel — our G7 mission at Big Island Christian Church.            </p>
             <div class="flex justify-center gap-6 mt-8">
                 <Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button>
-                <Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">WATCH A SERMON</Button>
+                <Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMON</Button>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
 
     <!-- Watch & Listen -->
     <div class="py-16">
-        <Heading title="WATCH & LISTEN" class="text-center !text-[#0A5954]"/>
+        <Heading title="TUNE IN TO A SERMON" class="text-center !text-[#0A5954]"/>
         <HeadingDescription description="Catch up on inspiring and faith-filled messages from our Sunday services." class="text-center !text-neutral-700 mt-4 px-5"/>
         <div
             class="flex max-w-5xl mx-auto mt-16 overflow-hidden border cursor-pointer sm:rounded-md h-96"
@@ -100,7 +100,7 @@
         </div>
     </div>
         <br>
-        <Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">WATCH THE SERMONS</Button>
+        <Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO A SERMON</Button>
     </div>
 
     <div class="relative px-5 py-16 overflow-hidden">
@@ -189,7 +189,7 @@
                 />
                 <CardEvent 
                         imgSrc="/img/kelly-small-group.webp"
-                        header="Kelly Small Group" 
+                        header="Kelley Small Group" 
                         headerDescription="Every Wednesday"
                         time="6:30 PM to 7:30 PM"
                         description="Come together with us in Bible study, fellowship, and prayer — a space where hearts connect, faith deepens, and lives are lifted."
