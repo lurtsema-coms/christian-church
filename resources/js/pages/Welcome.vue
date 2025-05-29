@@ -133,7 +133,7 @@
         <p class="mt-8 font-semibold text-center text-white">Thank you for partnering with us in ministry.</p>
 
         <div class="flex justify-center gap-6 mt-8">
-            <Button class="bg-[#D67C6B] font-bold px-8 py-6 md:text-lg">GIVE ONLINE</Button>
+            <a href="/online-giving"><Button class="bg-[#D67C6B] font-bold px-8 py-6 md:text-lg">GIVE ONLINE</Button></a>
             <Button class="bg-[#12876F] font-bold px-8 py-6 md:text-lg">LEARN MORE</Button>
         </div>
     </div>
@@ -146,7 +146,7 @@
                 <Heading title="We Believe in the Power of Prayer" class="!text-[#0A5954] mt-2 max-w-sm"/>
                 <HeadingDescription description="Whatever you’re going through, we’re here to pray with you and for you." class="mt-4 md:mt-8 !text-neutral-700"/>
                 <div>
-                    <Button class="bg-[#00576B] font-bold px-8 py-6 mt-8 md:text-lg">SUBMIT A REQUEST</Button>
+                    <a href="/prayer"><Button class="bg-[#00576B] font-bold px-8 py-6 mt-8 md:text-lg">SUBMIT A REQUEST</Button></a>
                 </div>
             </div>
             <div>
