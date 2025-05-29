@@ -49,8 +49,8 @@ const deleteProduct = (id) => {
                 </thead>
                 <tbody class="border divide-y divide-gray-200 border-sidebar-border/70 dark:border-sidebar-border">
                     <tr v-for="sermon in sermons.data" :key="sermon.id">
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ sermon.title }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ sermon.description }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap max-w-[200px] overflow-hidden text-ellipsis">{{ sermon.title }}</td>
+                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap max-w-[200px] overflow-hidden text-ellipsis">{{ sermon.description }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">
                             <img :src="sermon.image_url" alt="Image" class="object-cover w-auto h-16 rounded-md" />
                         </td>
