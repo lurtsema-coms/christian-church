@@ -2,8 +2,8 @@
     import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
     import Input from '@/components/ui/input/Input.vue';
     import Textarea from '@/components/ui/textarea/Textarea.vue';
-    import { useForm, usePage } from '@inertiajs/vue3';
-    import { computed, ref } from 'vue';
+    import { useForm, usePage , Head  } from '@inertiajs/vue3';
+    import { computed, ref} from 'vue';
     import Autoplay from 'embla-carousel-autoplay'
     import { Card, CardContent } from '@/components/ui/card'
     import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
@@ -61,6 +61,8 @@
 </script>
 
 <template>
+    <Head title="Prayer" />
+
     <div class="relative pt-28">
         <!-- BG -->
         <img src="/img/cardboard-texture.webp" alt="cardboard-texture-bg" class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply" />

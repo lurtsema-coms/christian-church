@@ -22,7 +22,8 @@ declare module 'vite/client' {
     }
 }
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+// const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = 'Big Island Christian Church';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

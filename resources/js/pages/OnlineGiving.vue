@@ -1,10 +1,14 @@
 <script setup lang="ts">
     import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
+    import { Head  } from '@inertiajs/vue3';
+
 
     defineOptions({ layout: AppLayout});
 </script>
 
 <template>
+    <Head title="Online Giving" />
+
     <div class="relative pb-16 pt-28">
         <!-- BG -->
         <img src="/img/cardboard-texture.webp" alt="cardboard-texture-bg" class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply" />
