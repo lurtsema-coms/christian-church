@@ -27,7 +27,7 @@
                         That’s the G6 Culture of Big Island Christian Church. The biblical truth of giving is always about giving BACK to God because there’s no blessing we’ve received that didn’t come from Him.
                     </p>
 
-                    <a href="https://give.tithe.ly/?formId=a4cedd8e-826b-4e26-97c9-c1eaa07286d7">
+                    <a href="https://give.tithe.ly/?formId=a4cedd8e-826b-4e26-97c9-c1eaa07286d7" target="_blank">
                         <Button class="relative z-10 bg-[#00576B] text-white font-bold px-8 py-6 md:text-lg flex mx-auto mt-8">
                             GIVE ONLINE
                         </Button>
