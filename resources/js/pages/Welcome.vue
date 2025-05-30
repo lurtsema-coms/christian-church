@@ -38,10 +38,11 @@
                 <img src="/img/church_logo.png" alt="church-logo" class="w-[7rem]" />
             </div>
             <h1 class="my-8 text-2xl font-bold text-center md:text-3xl lg:text-5xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
-               Aloha and Welcome!
+               Aloha & Welcome!
             </h1>
             <p class="max-w-2xl text-lg font-bold text-center text-white lg:text-2xl">
-                Gathering, Growing, Giving, and Going in the power and unity of the Gospel — our G7 mission at Big Island Christian Church.            </p>
+                Glorifying God by Gathering, Growing, Giving, and Going in the power and unity of the Gospel — that’s our G7 mission as Big Island Christian Church.
+            </p>
             <div class="flex justify-center gap-6 mt-8">
                 <Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button>
                 <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMON</Button></a>

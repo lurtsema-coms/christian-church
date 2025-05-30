@@ -51,7 +51,7 @@
                             <Link href="/sermons" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '' ]">
                                 Sermons
                             </Link>
-                            <a href="https://www.unstoppablekidsbooks.com/blog" :class="navigationMenuTriggerStyle()">
+                            <a href="https://www.unstoppablekidsbooks.com/blog" target="_blank" :class="navigationMenuTriggerStyle()">
                                 Blog
                             </a>
                         </NavigationMenuList>
@@ -97,7 +97,7 @@
                         <HeadingDescription description="ABOUT US" class="mb-2"/>
                         <a href="" class="block text-neutral-300">What to Expect</a>
                         <a href="" class="block text-neutral-300">Our Beliefs</a>
-                        <a href="/login" class="block text-neutral-300 underline mt-0 sm:mt-16">Login Account</a>
+                        <a href="/login" class="block mt-0 underline text-neutral-300 sm:mt-16">Login Account</a>
                     </div>
                     <div>
                         <HeadingDescription description="Get Involved" class="mb-2"/>
@@ -105,7 +105,7 @@
                         <a href="" class="block text-neutral-300">Submit Prayers</a>
                     </div>
                     <div>
-                        <HeadingDescription description="AFFILIATIONS" class="mb-2"/>
+                        <HeadingDescription description="HELPFUL LINKS" class="mb-2"/>
                         <a href="" class="block text-neutral-300">The Bereans</a>
                         <a href="" class="block text-neutral-300">Answers in Genesis</a>
                         <a href="" class="block text-neutral-300">9Marks</a>
