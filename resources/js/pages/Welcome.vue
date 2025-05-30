@@ -45,7 +45,7 @@
             </p>
             <div class="flex justify-center gap-6 mt-8">
                 <a href="#aloha-map"><Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button></a>
-                <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMONS</Button></a>
+                <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO SERMONS</Button></a>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
         </div>
     </div>
         <br>
-        <a href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO A SERMONS</Button></a>
+        <a href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO SERMONS</Button></a>
     </div>
 
     <div class="relative px-5 py-16 overflow-hidden">
