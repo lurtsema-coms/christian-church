@@ -44,8 +44,8 @@
                 Glorifying God by Gathering, Growing, Giving, and Going in the power and unity of the Gospel — that’s our G7 mission as Big Island Christian Church.
             </p>
             <div class="flex justify-center gap-6 mt-8">
-                <Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button>
-                <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMON</Button></a>
+                <a href="#aloha-map"><Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button></a>
+                <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO A SERMONS</Button></a>
             </div>
         </div>
 
@@ -101,7 +101,7 @@
         </div>
     </div>
         <br>
-        <a href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO A SERMON</Button></a>
+        <a href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO A SERMONS</Button></a>
     </div>
 
     <div class="relative px-5 py-16 overflow-hidden">
@@ -119,7 +119,7 @@
                     class="!text-neutral-700 mt-8"
                 />
                 <div>
-                    <Button class="bg-[#00576b] font-bold px-8 py-6 md:text-lg mt-8">LEARN MORE</Button>
+                    <a href="/about-us"><Button class="bg-[#00576b] font-bold px-8 py-6 md:text-lg mt-8">LEARN MORE</Button></a>
                 </div>
             </div>
         </div>
@@ -135,7 +135,7 @@
 
         <div class="flex justify-center gap-6 mt-8">
             <a href="/online-giving"><Button class="bg-[#D67C6B] font-bold px-8 py-6 md:text-lg">GIVE ONLINE</Button></a>
-            <Button class="bg-[#12876F] font-bold px-8 py-6 md:text-lg">LEARN MORE</Button>
+            <a href="/online-giving"><Button class="bg-[#12876F] font-bold px-8 py-6 md:text-lg">LEARN MORE</Button></a>
         </div>
     </div>
 
@@ -201,7 +201,7 @@
         </div>
     </div>
  
-    <svg class="relative rotate-180 -top-[1px]" width="100%" height="119px" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg  id="aloha-map" class="relative rotate-180 -top-[1px]" width="100%" height="119px" viewBox="0 0 1280 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <g fill="#005C63">
             <path d="M1280 3.4C1050.59 18 1019.4 84.89 734.42 84.89c-320 0-320-84.3-640-84.3C59.4.59 28.2 1.6 0 3.4V140h1280z" fill-opacity=".3"/>
             <path d="M0 24.31c43.46-5.69 94.56-9.25 158.42-9.25 320 0 320 89.24 640 89.24 256.13 0 307.28-57.16 481.58-80V140H0z" fill-opacity=".5"/>
