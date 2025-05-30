@@ -21,7 +21,7 @@
             </template>
         </div>
         <div class="flex items-center gap-2">
-            <DarkMode />
+            <!-- <DarkMode /> -->
         </div>
     </header>
 </template>
