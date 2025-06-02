@@ -45,7 +45,7 @@
             </p>
             <div class="flex justify-center gap-6 mt-8">
                 <a href="#aloha-map"><Button class="bg-[#e8efe3] text-[#0e3800] font-bold px-8 py-6 md:text-lg hover:text-white">PLAN A VISIT</Button></a>
-                <a href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO SERMONS</Button></a>
+                <Link href="/sermons"><Button class="bg-[#0a5954] text-white font-bold px-8 py-6 md:text-lg">LISTEN TO SERMONS</Button></Link>
             </div>
         </div>
 
@@ -62,46 +62,47 @@
     <div class="py-16">
         <Heading title="TUNE IN TO A SERMON" class="text-center !text-[#0A5954]"/>
         <HeadingDescription description="Catch up on inspiring and faith-filled messages from our Sunday services." class="text-center !text-neutral-700 mt-4 px-5"/>
-        <div
+        <Link
             class="flex max-w-5xl mx-auto mt-16 overflow-hidden border cursor-pointer sm:rounded-md h-96"
             @mouseleave="resetHover"
+            href="/sermons"
         >
-        <div
-            :class="['relative h-full transition-all duration-500', watchListen.image1]"
-            @mouseenter="handleHover('image1')"
-        >
-            <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14"/>
-            <img
-                src="/img/ressurection_day.webp"
-                alt="Church Image"
-                class="object-cover w-full h-full brightness-75"
+            <div
+                :class="['relative h-full transition-all duration-500', watchListen.image1]"
+                @mouseenter="handleHover('image1')"
             >
-        </div>
-        <div
-            :class="['relative h-full transition-all duration-500', watchListen.image2]"
-            @mouseenter="handleHover('image2')"
-        >
-            <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14"/>
-            <img
-                src="/img/ritual_or_reality.webp"
-                alt="Church Image"
-                class="object-cover w-full h-full brightness-75"
+                <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14"/>
+                <img
+                    src="/img/ressurection_day.webp"
+                    alt="Church Image"
+                    class="object-cover w-full h-full brightness-75"
+                >
+            </div>
+            <div
+                :class="['relative h-full transition-all duration-500', watchListen.image2]"
+                @mouseenter="handleHover('image2')"
             >
-        </div>
-        <div
-            :class="['relative h-full transition-all duration-500', watchListen.image3]"
-            @mouseenter="handleHover('image3')"
-        >
-            <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14"/>
-            <img
-                src="/img/for_the_joy.webp"
-                alt="Church Image"
-                class="object-cover w-full h-full brightness-75"
+                <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14"/>
+                <img
+                    src="/img/ritual_or_reality.webp"
+                    alt="Church Image"
+                    class="object-cover w-full h-full brightness-75"
+                >
+            </div>
+            <div
+                :class="['relative h-full transition-all duration-500', watchListen.image3]"
+                @mouseenter="handleHover('image3')"
             >
-        </div>
-    </div>
+                <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14"/>
+                <img
+                    src="/img/for_the_joy.webp"
+                    alt="Church Image"
+                    class="object-cover w-full h-full brightness-75"
+                >
+            </div>
+        </Link>
         <br>
-        <a href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO SERMONS</Button></a>
+        <Link href="/sermons"><Button class="bg-[#00245E] font-bold px-8 py-6 md:text-lg flex mx-auto">LISTEN TO SERMONS</Button></Link>
     </div>
 
     <div class="relative px-5 py-16 overflow-hidden">
@@ -119,7 +120,7 @@
                     class="!text-neutral-700 mt-8"
                 />
                 <div>
-                    <a href="/about-us"><Button class="bg-[#00576b] font-bold px-8 py-6 md:text-lg mt-8">LEARN MORE</Button></a>
+                    <Link href="/about-us"><Button class="bg-[#00576b] font-bold px-8 py-6 md:text-lg mt-8">LEARN MORE</Button></Link>
                 </div>
             </div>
         </div>
@@ -134,8 +135,8 @@
         <p class="mt-8 font-semibold text-center text-white">Thank you for partnering with us in ministry.</p>
 
         <div class="flex justify-center gap-6 mt-8">
-            <a href="/online-giving"><Button class="bg-[#D67C6B] font-bold px-8 py-6 md:text-lg">GIVE ONLINE</Button></a>
-            <a href="/online-giving"><Button class="bg-[#12876F] font-bold px-8 py-6 md:text-lg">LEARN MORE</Button></a>
+            <Link href="/online-giving"><Button class="bg-[#D67C6B] font-bold px-8 py-6 md:text-lg">GIVE ONLINE</Button></Link>
+            <Link href="/online-giving"><Button class="bg-[#12876F] font-bold px-8 py-6 md:text-lg">LEARN MORE</Button></Link>
         </div>
     </div>
 

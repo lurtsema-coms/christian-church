@@ -29,7 +29,7 @@
     <Head title="About Us" />
 
     <!-- What To Exepect -->
-    <div class="relative pb-16 pt-28">
+    <div class="relative pb-16 pt-28" id="what-to-expect">
         <!-- BG -->
         <img src="/img/cardboard-texture.webp" alt="cardboard-texture-bg" class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply" />
         <div class="absolute inset-0 z-0 bg-gray-100/75"></div>
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="relative flex flex-col px-5 py-16">
+    <div class="relative flex flex-col px-5 pt-16" id="our-beliefs">
         <Heading title="Our Beliefs" class="text-center !text-[#00457A]"/>
         <div class="max-w-4xl mx-auto mt-12 border-[10px] border-[#F1F1F1] h-[40rem] overflow-auto p-10 rounded-xl sf">
             <p>Big Island Christian Church<br />Statement of Faith &amp; Practice and A.N.C.H.O.R. Membership</p>

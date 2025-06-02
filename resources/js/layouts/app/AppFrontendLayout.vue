@@ -95,28 +95,27 @@
                 <div class="grid w-full max-w-5xl grid-cols-2 gap-8 py-12 mx-auto md:grid-cols-3 lg:grid-cols-4">
                     <div>
                         <HeadingDescription description="ABOUT US" class="mb-2"/>
-                        <a href="" class="block text-neutral-300">What to Expect</a>
-                        <a href="" class="block text-neutral-300">Our Beliefs</a>
-                        <a href="/login" class="block mt-0 underline text-neutral-300 sm:mt-16">Login Account</a>
+                        <Link href="/about-us" class="block text-neutral-300">What to Expect</Link>
+                        <Link href="/about-us#our-beliefs" class="block text-neutral-300">Our Beliefs</Link>
+                        <Link href="/login" class="block mt-0 underline text-neutral-300 sm:mt-16">Login Account</Link>
                     </div>
                     <div>
-                        <HeadingDescription description="Get Involved" class="mb-2"/>
-                        <a href="" class="block text-neutral-300">Online Giving</a>
-                        <a href="" class="block text-neutral-300">Submit Prayers</a>
+                        <HeadingDescription description="GET INVOLVED" class="mb-2"/>
+                        <Link href="/online-giving" class="block text-neutral-300">Online Giving</Link>
+                        <Link href="/prayer" class="block text-neutral-300">Submit Prayers</Link>
                     </div>
                     <div>
                         <HeadingDescription description="HELPFUL LINKS" class="mb-2"/>
-                        <a href="" class="block text-neutral-300">The Bereans</a>
-                        <a href="" class="block text-neutral-300">Answers in Genesis</a>
-                        <a href="" class="block text-neutral-300">9Marks</a>
-                        <a href="" class="block text-neutral-300">The Bible Project</a>
-                        <a href="" class="block text-neutral-300">My Utmost for His Highest</a>
-                        <a href="" class="block text-neutral-300">The DSNTR</a>
+                        <a href="https://thebereans.net/cult-listing/" target="_blank" class="block text-neutral-300">The Bereans</a>
+                        <a href="https://answersingenesis.org/" target="_blank" class="block text-neutral-300">Answers in Genesis</a>
+                        <a href="https://www.9marks.org/" target="_blank" class="block text-neutral-300">9Marks</a>
+                        <a href="https://bibleproject.com/" target="_blank" class="block text-neutral-300">The Bible Project</a>
+                        <a href="https://utmost.org/" target="_blank" class="block text-neutral-300">My Utmost for His Highest</a>
+                        <a href="https://disntr.com/" target="_blank" class="block text-neutral-300">The DSNTR</a>
                     </div>
                     <div>
-                        <HeadingDescription description="ABOUT US" class="mb-2"/>
-                        <a href="" class="block text-neutral-300">Regular Schedule</a>
-                        <a href="" class="block text-neutral-300">The Bible Project</a>
+                        <HeadingDescription description="SCHEDULE" class="mb-2"/>
+                        <p href="" class="block text-neutral-300">Regular Schedule</p>
                         <HeadingDescription description="SUNDAY SERVICE" class="mt-4 mb-2"/>
                         <a href="" class="block text-neutral-300">10:00 AM to 11:30 AM</a>
                     </div>
