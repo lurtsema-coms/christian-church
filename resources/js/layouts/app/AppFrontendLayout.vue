@@ -54,6 +54,9 @@
                             <a href="https://www.unstoppablekidsbooks.com/blog" target="_blank" :class="navigationMenuTriggerStyle()">
                                 Blog
                             </a>
+                            <a v-if="$page.props.auth?.user" href="/admin_sermon"  :class="navigationMenuTriggerStyle()" class="underline">
+                                Return to Account
+                            </a>
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
