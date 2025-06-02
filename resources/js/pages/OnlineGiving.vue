@@ -36,7 +36,7 @@
                 <p class="max-w-lg mx-auto mt-8 italic font-semibold text-center text-neutral-700">
                     “Each one should give what they have decided in their heart to give, not out of regret or compulsion. For God loves a cheerful giver.”
                 </p>
-                <p class="mt-4 text-center text-sky-600">2 Cor 9:7</p>
+                <a href="https://biblia.com/bible/hcsb/2-corinthians/9/7" target="_blank" class="mt-4 text-center text-sky-600">2 Cor 9:7</a>
             </div>
         </div>
     </div>
