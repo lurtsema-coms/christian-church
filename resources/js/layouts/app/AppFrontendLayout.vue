@@ -1,39 +1,51 @@
 <script setup lang="ts">
-    import {
-        NavigationMenu,
-        NavigationMenuContent,
-        NavigationMenuItem,
-        NavigationMenuLink,
-        NavigationMenuList,
-        NavigationMenuTrigger,
-        navigationMenuTriggerStyle,
-    } from '@/components/ui/navigation-menu'
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
 
-    import Countdown from '@/components/Coutdown.vue';
-    import { Link } from '@inertiajs/vue3';
+import Countdown from '@/components/Coutdown.vue';
+import { Link } from '@inertiajs/vue3';
 
-    const components: { title: string, href: string, description: string }[] = 
-        [
-            {
-                title: 'What to Expect',
-                href: '/docs/components/alert-dialog',
-                description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, quam!',
-            },
-            {
-                title: 'Our Beliefs',
-                href: '/docs/components/hover-card',
-                description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, quam!',
-            },
-        ]
+const components: { title: string, href: string, description: string }[] = 
+    [
+        {
+            title: 'What to Expect',
+            href: '/docs/components/alert-dialog',
+            description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, quam!',
+        },
+        {
+            title: 'Our Beliefs',
+            href: '/docs/components/hover-card',
+            description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, quam!',
+        },
+    ]
+
+// Reactive state for mobile menu
+import { ref } from 'vue';
+const isMobileMenuOpen = ref(false);
+
+const toggleMobileMenu = () => {
+    isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+const closeMobileMenu = () => {
+    isMobileMenuOpen.value = false;
+};
 </script>
 
 <template>
     <!-- Navbar -->
     <div class="fixed z-50 w-full bg-white border-b shadow-sm border-neutral-200">
         <nav class="w-full px-10 mx-auto max-w-8xl">
-            <div class="relative flex justify-between py-4">
+            <div class="relative flex items-center justify-between py-4">
                 <img :src="'/img/church_logo.png'" class="max-w-12" alt="church_logo.png">
-                <div class="absolute z-10 -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+                <div class="absolute z-10 hidden -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 lg:block">
                     <NavigationMenu>
                         <NavigationMenuList>
                             <Link href="/" :class="[navigationMenuTriggerStyle(), $page.url === '/' ? 'text-sky-700' : '' ]">
@@ -54,22 +66,59 @@
                             <a href="https://www.unstoppablekidsbooks.com/blog" target="_blank" :class="navigationMenuTriggerStyle()">
                                 Blog
                             </a>
-                            <a v-if="$page.props.auth?.user" href="/admin_sermon"  :class="navigationMenuTriggerStyle()" class="underline">
-                                Return to Account
-                            </a>
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
-                <!-- <div class="relative flex items-center gap-2">
-                    <div class="flex items-center justify-center rounded-full bg-white shadow-[#F7EDE2] border-red-400 border shadow-sm w-11 h-11">
-                        <img src="/icons/heart.png" alt="" class="w-8">
-                    </div>
-                    <div class="flex items-center justify-center rounded-full bg-white shadow-[#F7EDE2] border-sky-400 border shadow-sm w-11 h-11">
-                        <img src="/icons/loud-speaker.png" alt="" class="w-8">
-                    </div>
-                </div> -->
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="cursor-pointer lg:hidden" @click="toggleMobileMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </div>
             </div>
         </nav>
+        
+        <!-- Black Overlay for Mobile Menu -->
+        <div 
+            v-if="isMobileMenuOpen" 
+            class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden" 
+            @click="closeMobileMenu"
+        ></div>
+        
+        <!-- Mobile Menu (Slides from right to left) -->
+        <div 
+            :class="['fixed top-0 right-0 h-full w-64 bg-white shadow-lg z-50 lg:hidden transform transition-transform duration-300 ease-in-out', 
+                     isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full']"
+        >
+            <div class="flex justify-end p-4">
+                <button @click="toggleMobileMenu" class="text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col p-4 space-y-4">
+                <Link href="/" :class="[$page.url === '/' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']" @click="toggleMobileMenu">
+                    Home
+                </Link>
+                <Link href="/about-us" :class="[$page.url === '/about-us' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']" @click="toggleMobileMenu">
+                    About Us
+                </Link>
+                <Link href="/prayer" :class="[$page.url === '/prayer' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']" @click="toggleMobileMenu">
+                    Prayer
+                </Link>
+                <Link href="/online-giving" :class="[$page.url === '/online-giving' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']" @click="toggleMobileMenu">
+                    Online Giving
+                </Link>
+                <Link href="/sermons" :class="[$page.url === '/sermons' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']" @click="toggleMobileMenu">
+                    Sermons
+                </Link>
+                <a href="https://www.unstoppablekidsbooks.com/blog" target="_blank" class="text-lg font-medium text-neutral-700 hover:text-sky-700" @click="toggleMobileMenu">
+                    Blog
+                </a>
+            </div>
+        </div>
     </div>
     
     <slot></slot>
@@ -128,3 +177,25 @@
         </div>
     </footer>
 </template>
+
+<style>
+/* Custom styles for the sliding menu and overlay */
+.transform {
+    transition-property: transform;
+}
+.transition-transform {
+    transition-property: transform;
+}
+.duration-300 {
+    transition-duration: 300ms;
+}
+.ease-in-out {
+    transition-timing-function: ease-in-out;
+}
+.translate-x-0 {
+    transform: translateX(0);
+}
+.translate-x-full {
+    transform: translateX(100%);
+}
+</style>

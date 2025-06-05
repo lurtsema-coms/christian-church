@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="relative flex flex-col px-5 pt-16" id="our-beliefs">
+    <div class="relative flex flex-col px-5 py-16" id="our-beliefs">
         <Heading title="Our Beliefs" class="text-center !text-[#00457A]"/>
         <div class="max-w-4xl mx-auto mt-12 border-[10px] border-[#F1F1F1] h-[40rem] overflow-auto p-10 rounded-xl sf">
             <p>Big Island Christian Church<br />Statement of Faith &amp; Practice and A.N.C.H.O.R. Membership</p>
