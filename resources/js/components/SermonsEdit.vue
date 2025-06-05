@@ -9,6 +9,7 @@ const sermonTitle = ref(props.sermon.title);
 const sermonDescription = ref(props.sermon.description);
 const sermonImage = ref(props.sermon.image_url);
 const sermonAudio = ref(props.sermon.audio_url);
+const isSubmitting = ref(false);
 
 const form = ref({
     title: props.sermon.title,
@@ -32,6 +33,7 @@ const handleAudioChange = (event: Event) => {
 };
 
 const submit = () => {
+    isSubmitting.value = true;
     const formData = new FormData();
     formData.append('_method', 'put'); // To handle PUT request
     formData.append('title', form.value.title);
@@ -51,6 +53,12 @@ const submit = () => {
         onSuccess: () => {
             // Optional: Redirect or show success message
         },
+        onFinish: () => {
+            isSubmitting.value = false;
+        },
+        onError: () => {
+            isSubmitting.value = false;
+        }
     });
 };
 </script>
@@ -141,7 +149,18 @@ const submit = () => {
 
             <!-- Submit Button -->
             <div class="!mt-8 text-right">
-                <Button type="submit">Submit</Button>
+                <Button type="submit" :disabled="isSubmitting">
+                    <template v-if="isSubmitting">
+                        <svg class="animate-spin inline w-4 h-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                        </svg>
+                        Submitting...
+                    </template>
+                    <template v-else>
+                        Submit
+                    </template>
+                </Button>
             </div>
             </div>
         </form>

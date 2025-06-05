@@ -7,7 +7,7 @@ const title = ref('');
 const description = ref('');
 const image = ref<File | null>(null);
 const audio = ref<File | null>(null);
-
+const isSubmitting =ref(false);
 
 const handleImage = (e: Event) => {
     const target = e.target as HTMLInputElement;
@@ -24,6 +24,7 @@ const handleAudio = (e: Event) => {
 };
 
 const submitForm = () => {
+    isSubmitting.value = true;
     if (!image.value || !audio.value) {
         alert('Both image and audio files are required.');
         return;
@@ -113,7 +114,18 @@ const submitForm = () => {
 
                     <!-- Submit Button -->
                     <div class="!mt-8 text-right">
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit":disabled="isSubmitting">
+                            <template v-if="isSubmitting">
+                                <svg class="animate-spin inline w-4 h-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                                </svg>
+                                Submitting...
+                            </template>
+                            <template v-else>
+                                Submit
+                            </template>
+                        </Button>
                     </div>
                 </div>
             </form>
