@@ -3,9 +3,11 @@ import { Button } from '@/components/ui/button';
 import { ref, watch } from 'vue';
 import { router } from '@inertiajs/vue3';
 
-defineProps({
-    sermons: Object
-});
+// defineProps({
+//     sermons: Object
+// });
+
+const props = defineProps<{ sermons: any }>(); 
 
 
 
