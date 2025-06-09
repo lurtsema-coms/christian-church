@@ -15,7 +15,7 @@ const editSermon = (sermon) =>{
     router.get(route('sermons.edit', sermon.id));
 }
 
-const deleteProduct = (id) => {
+const deleteSermon = (id) => {
     if (confirm('Are you sure you want to delete this Sermon?')) {
         router.delete(route('sermons.destroy', id), {
             preserveState: true,
@@ -65,7 +65,7 @@ const deleteProduct = (id) => {
                         <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <Button @click="editSermon(sermon)">Edit</Button>
-                                <Button variant="destructive" @click="deleteProduct(sermon.id)">Delete</Button>
+                                <Button variant="destructive" @click="deleteSermon(sermon.id)">Delete</Button>
                             </div>
                         </td>
                     </tr>

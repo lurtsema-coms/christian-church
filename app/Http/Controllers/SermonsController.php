@@ -70,7 +70,7 @@ class SermonsController extends Controller
             'created_by' => auth()->id(),   
         ]);
     
-        return redirect()->route('admin_sermon')->with('success', 'Sermon uploaded successfully.');
+        return Inertia::location(route('admin_sermon'));
 
     }
 
