@@ -24,13 +24,49 @@ class SermonsController extends Controller
         ]);
     }
 
-    public function display()
-    {
-        $query = Sermons::with('creator')->withoutTrashed()->latest();
-        $sermons = $query->paginate(10)->withQueryString();
+    // public function display()
+    // {
+    //     $query = Sermons::with('creator')->withoutTrashed()->latest();
+    //     $sermons = $query->paginate(10)->withQueryString();
 
-        return Inertia:: render ('Sermons',[
-            'sermons' => $sermons,
+    //     return Inertia:: render ('Sermons',[
+    //         'sermons' => $sermons,
+    //     ]);
+    // }
+
+        public function display()
+    {
+        $url = 'https://feed.podbean.com/gabquing29/feed.xml';
+
+        $context = stream_context_create([
+            "ssl" => [
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ]
+        ]);
+
+        $rssContent = file_get_contents($url, false, $context);
+        if (!$rssContent) {
+            abort(500, "Failed to load RSS feed.");
+        }
+
+        $rss = simplexml_load_string($rssContent);
+        
+        $sermons = collect();
+
+        foreach ($rss->channel->item as $item) {
+            $sermons->push([
+                'title' => (string) $item->title,
+                'description' => (string) $item->description,
+                'audio_url' => (string) $item->enclosure['url'],
+                'image_url' => optional($item->children('itunes', true)->image)->attributes()->href ?? '/img/default-sermon.jpg',
+            ]);
+        }
+
+        return Inertia::render('Sermons', [
+            'sermons' => [
+                'data' => $sermons
+            ]
         ]);
     }
 
