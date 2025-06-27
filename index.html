@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <hr>
+        <div>
+            <p
+                style="
+                    font-weight: 800;
+                    background: linear-gradient(16deg, #efbf04 22%, #a8772d 42%, #efbf04 52%, #efefed 74%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-size: 2.3rem;
+                    line-height: 1.1;
+                    margin: 0;
+                "
+            >
+                A PROVEN PERFORMER
+            </p>
+            <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 3rem">
+                <div style="flex: 1 1 calc((33.333% - 6rem) / 3); border: 1px solid #efbf04; padding: 1rem; box-sizing: border-box">
+                    <p style="font-size: 1.2rem; font-weight: 800; color: #bb8838; margin-top: 1rem">GOT POLITICAL VOICEOVERS?</p>
+                    <p style="font-size: 1rem; color: #cdcacd">
+                        CHECK OUT POLITICAL DEMOS NOW AT TheCAMPAIGNVOICE.COM Oh Yeah! The gloves are off and Election season’s on! Whether it’s
+                        hard-hitting attack, or the ol’ soft blow, put a Pollie Award-winning voice in your corner! Whatever your political media
+                        needs, we’re here for ya....
+                    </p>
+                </div>
+
+                <div style="flex: 1 1 calc((33.333% - 6rem) / 3); border: 1px solid #efbf04; padding: 1rem; box-sizing: border-box">
+                    <p style="font-size: 1.2rem; font-weight: 800; color: #bb8838; margin-top: 1rem">WHAT HAVE I DONE FOR YOU LATELY?</p>
+                    <p style="font-size: 1rem; color: #cdcacd">
+                        Heading 2 If it’s been awhile, hit me up! Just a sampling of some recent credits…National voice for Bernie Sanders Campaign,
+                        TV/Radio/Online-2016, Narration for Nike, Disney, Northrup Grumman, AMEX. More NFL VO, Cowboys/Texans, TX Lottery, Nat’l VO
+                        for HP, AIG,...
+                    </p>
+                </div>
+
+                <div style="flex: 1 1 calc((33.333% - 6rem) / 3); border: 1px solid #efbf04; padding: 1rem; box-sizing: border-box">
+                    <p style="font-size: 1.2rem; font-weight: 800; color: #bb8838; margin-top: 1rem">KEEPING BUSY…</p>
+                    <p style="font-size: 1rem; color: #cdcacd">
+                        Busy enough that I haven’t had time to update demos in a while…sooo, if there’s a certain read you’re listening for and you
+                        can’t find it in the demos posted, just shoot me an email or give me a call. Auditions are fast and free!rutrum non a eros.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 5rem">
+            <p
+                style="
+                    font-weight: 800;
+                    background: linear-gradient(16deg, #efbf04 22%, #a8772d 42%, #efbf04 52%, #efefed 74%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    font-size: 2.3rem;
+                    line-height: 1.1;
+                    margin: 0;
+                "
+            >
+                LET'S TALK!
+            </p>
+            <p style="font-size: 1rem; color: #cdcacd; margin-top: 1rem">
+                Have a question, or a job you’re interested in hiring Mike for? Need a free custom audition? Shoot me an email or give me a call and
+                I’ll be in touch ASAP!
+            </p>
+        </div>
+        <br>
+        <br>
+        <style>
+            .ms-home-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .ms-home-main-video {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                margin-bottom: 20px;
+            }
+            .ms-home-main-video iframe {
+                width: 100%;
+                height: 100%;
+                border: 1px solid #efbf04;
+                border-radius: 8px;
+            }
+            .ms-home-thumbnails-container {
+                position: relative;
+                overflow: hidden;
+            }
+            .ms-home-thumbnails {
+                display: flex;
+                gap: 20px;
+                overflow-x: hidden;
+                scroll-behavior: smooth;
+                padding-bottom: 10px;
+                scrollbar-width: none; /* Firefox */
+            }
+            .ms-home-thumbnails::-webkit-scrollbar {
+                display: none; /* Chrome, Safari */
+            }
+            .ms-home-thumbnail {
+                flex: 0 0 calc(33.333% - 13.33px); /* Three items with gap */
+                max-width: calc(33.333% - 13.33px);
+                cursor: pointer;
+                transition: transform 0.3s;
+                position: relative;
+            }
+            .ms-home-thumbnail:hover {
+                transform: scale(1.05);
+            }
+            .ms-home-thumbnail img {
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                object-fit: cover;
+                border-radius: 8px;
+                border: 1px solid #efbf04;
+            }
+            .ms-home-thumbnail.ms-home-active::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 8px;
+            }
+            .ms-home-nav-button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 24px;
+                border-radius: 5px;
+                z-index: 10;
+                display: none; /* Hidden by default */
+            }
+            .ms-home-nav-button.ms-home-visible {
+                display: block; /* Show when needed */
+            }
+            .ms-home-nav-button.ms-home-left {
+                left: 0;
+            }
+            .ms-home-nav-button.ms-home-right {
+                right: 0;
+            }
+            .ms-home-nav-button:hover {
+                background: rgba(0, 0, 0, 0.7);
+            }
+            @media (max-width: 768px) {
+                .ms-home-container {
+                    max-width: 100%;
+                    padding: 10px;
+                }
+                .ms-home-thumbnail {
+                    flex: 0 0 calc(33.333% - 10px); /* Maintain three columns, smaller gap */
+                    max-width: calc(33.333% - 10px);
+                }
+                .ms-home-thumbnails {
+                    gap: 15px; /* Smaller gap for smaller screens */
+                }
+                .ms-home-nav-button {
+                    padding: 8px;
+                    font-size: 20px; /* Smaller buttons */
+                }
+            }
+        </style>
+        <div class="ms-home-container">
+            <div class="ms-home-main-video">
+                <iframe src="https://www.youtube.com/embed/pW-I1E69e8g?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="ms-home-thumbnails-container">
+                <button class="ms-home-nav-button ms-home-left">←</button>
+                <div class="ms-home-thumbnails">
+                    <div class="ms-home-thumbnail ms-home-active" data-video-id="pW-I1E69e8g">
+                        <img src="https://img.youtube.com/vi/pW-I1E69e8g/mqdefault.jpg" alt="Video 1 Thumbnail">
+                    </div>
+                    <div class="ms-home-thumbnail" data-video-id="z2lDATZekIw">
+                        <img src="https://img.youtube.com/vi/z2lDATZekIw/mqdefault.jpg" alt="Video 2 Thumbnail">
+                    </div>
+                    <div class="ms-home-thumbnail" data-video-id="h3lYYhLe-4I">
+                        <img src="https://img.youtube.com/vi/h3lYYhLe-4I/mqdefault.jpg" alt="Video 3 Thumbnail">
+                    </div>
+                    <div class="ms-home-thumbnail" data-video-id="CUTI5gf4Bho">
+                        <img src="https://img.youtube.com/vi/CUTI5gf4Bho/mqdefault.jpg" alt="Video 4 Thumbnail">
+                    </div>
+                    <div class="ms-home-thumbnail" data-video-id="XHxW1GmLmoI">
+                        <img src="https://img.youtube.com/vi/XHxW1GmLmoI/mqdefault.jpg" alt="Video 5 Thumbnail">
+                    </div>
+                    <div class="ms-home-thumbnail" data-video-id="4-T6H6klm5E">
+                        <img src="https://img.youtube.com/vi/4-T6H6klm5E/mqdefault.jpg" alt="Video 6 Thumbnail">
+                    </div>
+                </div>
+                <button class="ms-home-nav-button ms-home-right ms-home-visible">→</button>
+            </div>
+        </div>
+        <script>
+            const thumbnails = document.querySelectorAll('.ms-home-thumbnail');
+            const mainVideo = document.querySelector('.ms-home-main-video iframe');
+            const thumbnailsContainer = document.querySelector('.ms-home-thumbnails');
+            const leftButton = document.querySelector('.ms-home-nav-button.ms-home-left');
+            const rightButton = document.querySelector('.ms-home-nav-button.ms-home-right');
+    
+            function updateNavButtons() {
+                const maxScroll = thumbnailsContainer.scrollWidth - thumbnailsContainer.clientWidth;
+                leftButton.classList.toggle('ms-home-visible', thumbnailsContainer.scrollLeft > 0);
+                rightButton.classList.toggle('ms-home-visible', thumbnailsContainer.scrollLeft < maxScroll - 1);
+            }
+    
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', () => {
+                    thumbnails.forEach(t => t.classList.remove('ms-home-active'));
+                    thumbnail.classList.add('ms-home-active');
+                    const videoId = thumbnail.getAttribute('data-video-id');
+                    mainVideo.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
+                });
+            });
+    
+            function scrollToNearestThumbnail() {
+                const thumbnailWidth = thumbnails[0].offsetWidth + 20; // Include gap
+                const scrollLeft = thumbnailsContainer.scrollLeft;
+                const index = Math.round(scrollLeft / thumbnailWidth);
+                thumbnailsContainer.scrollTo({
+                    left: index * thumbnailWidth,
+                    behavior: 'smooth'
+                });
+            }
+    
+            leftButton.addEventListener('click', () => {
+                const thumbnailWidth = thumbnails[0].offsetWidth + 20; // Include gap
+                thumbnailsContainer.scrollBy({ left: -thumbnailWidth * 3, behavior: 'smooth' });
+                setTimeout(scrollToNearestThumbnail, 300); // Snap after scroll
+            });
+    
+            rightButton.addEventListener('click', () => {
+                const thumbnailWidth = thumbnails[0].offsetWidth + 20; // Include gap
+                thumbnailsContainer.scrollBy({ left: thumbnailWidth * 3, behavior: 'smooth' });
+                setTimeout(scrollToNearestThumbnail, 300); // Snap after scroll
+            });
+    
+            thumbnailsContainer.addEventListener('scroll', updateNavButtons);
+            window.addEventListener('resize', updateNavButtons);
+            updateNavButtons(); // Initial check
+        </script>
+        <br>
+        <br>
+        <style>
+            #ms-home-carousel-container {
+              width: 100%;
+              margin: 3rem auto;
+              border-radius: 8px;
+            }
+            
+            .ms-home-carousel-title {
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: #000;
+              text-align: center;
+              margin-bottom: 3rem;
+            }
+            
+            .ms-home-carousel-slide-container {
+              position: relative;
+              overflow: hidden;
+              border-radius: 10rem;
+            }
+            
+            .ms-home-carousel-slides {
+              display: flex;
+              transition: transform 0.5s ease-in-out;
+            }
+            
+            .ms-home-carousel-slide {
+              flex: 0 0 25%;
+              height: 200px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: #fff;
+            }
+            
+            .ms-home-carousel-slide img {
+              width: 180px;
+              height: 90px;
+              object-fit: contain;
+            }
+            
+            .ms-home-carousel-nav-arrow {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              background: rgba(0, 0, 0, 0.5);
+              color: white;
+              border: none;
+              padding: 10px;
+              cursor: pointer;
+              font-size: 1.5rem;
+              z-index: 10;
+              border-radius: 4px;
+            }
+            
+            .ms-home-carousel-prev {
+              left: 10px;
+            }
+            
+            .ms-home-carousel-next {
+              right: 10px;
+            }
+            
+            @media (max-width: 768px) {
+              .ms-home-carousel-slide {
+                flex: 0 0 33.33%;
+                height: 160px;
+              }
+            
+              .ms-home-carousel-nav-arrow {
+                padding: 8px;
+                font-size: 1.2rem;
+              }
+            
+              .ms-home-carousel-slide img {
+                width: 140px;
+                height: 70px;
+              }
+            
+              .ms-home-carousel-title {
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
+              }
+            }
+            
+            @media (max-width: 480px) {
+              .ms-home-carousel-slide {
+                flex: 0 0 100%;
+                height: 120px;
+              }
+            
+              .ms-home-carousel-nav-arrow {
+                padding: 6px;
+                font-size: 1rem;
+              }
+            
+              .ms-home-carousel-slide img {
+                width: 100px;
+                height: 50px;
+              }
+            
+              .ms-home-carousel-title {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+              }
+            }
+        </style>
+            
+        <div id="ms-home-carousel-container">
+            <h2 class="ms-home-carousel-title">A World of Satisfied Clients. From Rising Start-Ups to Fortune 500 Giants!</h2>
+            <div class="ms-home-carousel-slide-container">
+            <div class="ms-home-carousel-slides">
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/Disney.jpg" alt="Logo 1"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/UPS.jpg" alt="Logo 2"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/Walmart.jpg" alt="Logo 3"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/Universal.jpg" alt="Logo 4"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/Pfizer.jpg" alt="Logo 5"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/State-Farm.jpg" alt="Logo 6"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/Visa.jpg" alt="Logo 7"></div>
+                <div class="ms-home-carousel-slide"><img src="https://josephl236.sg-host.com/wp-content/uploads/2017/01/FORD.jpg" alt="Logo 8"></div>
+            </div>
+            <button class="ms-home-carousel-nav-arrow ms-home-carousel-prev">❮</button>
+            <button class="ms-home-carousel-nav-arrow ms-home-carousel-next">❯</button>
+            </div>
+        </div>
+        
+        <script>
+        const slider = document.querySelector('.ms-home-carousel-slides');
+        const slides = document.querySelectorAll('.ms-home-carousel-slide');
+        const prevBtn = document.querySelector('.ms-home-carousel-prev');
+        const nextBtn = document.querySelector('.ms-home-carousel-next');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let visibleSlides = 4;
+        let autoplayInterval;
+        
+        function updateVisibleSlides() {
+            if (window.innerWidth <= 480) {
+            visibleSlides = 1;
+            } else if (window.innerWidth <= 768) {
+            visibleSlides = 3;
+            } else {
+            visibleSlides = 4;
+            }
+        }
+        
+        function updateSlider() {
+            updateVisibleSlides();
+            const maxIndex = totalSlides - visibleSlides;
+            if (currentIndex > maxIndex) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = maxIndex;
+            slider.style.transform = `translateX(-${(currentIndex * 100) / visibleSlides}%)`;
+        }
+        
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex >= totalSlides - visibleSlides + 1) {
+            currentIndex = 0;
+            }
+            updateSlider();
+        }
+        
+        function prevSlide() {
+            currentIndex--;
+            if (currentIndex < 0) {
+            currentIndex = totalSlides - visibleSlides;
+            }
+            updateSlider();
+        }
+        
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 4000);
+        }
+        
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            stopAutoplay();
+            prevSlide();
+            startAutoplay();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+        });
+        
+        window.addEventListener('resize', updateSlider);
+        
+        updateSlider();
+        startAutoplay();
+        </script>
+    </body>
+</html>

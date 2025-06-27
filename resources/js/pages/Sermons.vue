@@ -1,42 +1,47 @@
 <script setup lang="ts">
-    import { Head, Link, router } from '@inertiajs/vue3';
-    import DarkMode from '@/components/DarkMode.vue';
-    import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
-    import Carousel from '@/components/Carousel.vue';
+import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
+import { Head } from '@inertiajs/vue3';
 
-    defineOptions({ layout: AppLayout});
+defineOptions({ layout: AppLayout });
 
-    defineProps({
-        sermons: Object
-    });
-
+defineProps({
+    sermons: Object,
+});
 </script>
 
 <template>
     <Head title="Sermons" />
 
-    <div class="relative pb-16 pt-20">
-        <img src="/img/cardboard-texture.webp" alt="cardboard-texture-bg" class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply" />
+    <div class="relative w-full pt-20 pb-16">
+        <img
+            src="/img/cardboard-texture.webp"
+            alt="cardboard-texture-bg"
+            class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply"
+        />
         <div class="absolute inset-0 z-0 bg-gray-100/75"></div>
 
         <div class="relative z-10 flex flex-col px-5 mt-12">
-            <div class="z-10">
-                <div v-for="sermon in sermons.data" :key="sermon.id" class="mt-12 flex flex-col md:flex-row justify-center items-center px-5 md:h-[18rem] rounded-md mb-10">
-                    <img :src="sermon.image_url" alt="Image" class="w-full h-full rounded-t-lg md:max-w-md md:rounded-t-none lg:rounded-l-lg">
-                    <div class="flex flex-col bg-[#00457A] h-full w-full md:max-w-[36rem] p-[40px] text-white rounded-b-lg md:rounded-b-none lg:rounded-r-lg">
+            <div class="z-10 w-full">
+                <div
+                    v-for="sermon in sermons.data"
+                    :key="sermon.id"
+                    class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[18rem] md:flex-row"
+                >
+                    <img :src="sermon.image_url" alt="Image" class="w-full h-full rounded-t-lg md:max-w-md md:rounded-t-none lg:rounded-l-lg" />
+                    <div class="sm:flex sm:flex-col sm:h-full bg-[#00457A] p-6 text-white md:max-w-[36rem] md:rounded-b-none lg:rounded-r-lg">
                         <div class="flex-1">
-                            <span class="block text-[1.5rem] font-bold text-center mb-1">{{ sermon.title }}</span>
-                            <div class=" text-center " v-html="sermon.description"></div>
+                            <span class="mb-1 block text-center text-[1.5rem] font-bold">{{ sermon.title }}</span>
+                            <div class="text-center" v-html="sermon.description"></div>
                         </div>
                         <div class="mt-5 rounded">
-                            <audio controls class="w-full ">
-                                <source :src="sermon.audio_url" type="audio/mpeg">
+                            <audio controls class="w-full">
+                                <source :src="sermon.audio_url" type="audio/mpeg" />
                                 Your browser does not support the audio element.
                             </audio>
                         </div>
                     </div>
                 </div>
-                <!-- <div class=" mt-4 flex flex-row justify-center items-center px-5 gap-20">
+                <!-- <div class="flex flex-row items-center justify-center gap-20 px-5 mt-4 ">
                     <button
                         class="bg-[#00457A] p-2 text-white rounded-md disabled:bg-[#00457a92]"
                         :disabled="!sermons.prev_page_url" 
@@ -58,6 +63,4 @@
             </div>
         </div>
     </div>
-
 </template>
-
