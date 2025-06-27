@@ -25,7 +25,7 @@
                     <img :src="sermon.image_url" alt="Image" class="w-full h-full rounded-t-lg md:max-w-md md:rounded-t-none lg:rounded-l-lg">
                     <div class="bg-[#00457A] h-full w-full md:max-w-[36rem] p-[40px] text-white rounded-b-lg md:rounded-b-none lg:rounded-r-lg">
                         <span class="block text-[1.5rem] font-bold text-center mb-1">{{ sermon.title }}</span>
-                        <p class="">{{ sermon.description }}</p>
+                        <div v-html="sermon.description"></div>
                         <div class="mt-5 rounded">
                             <audio controls class="w-full ">
                                 <source :src="sermon.audio_url" type="audio/mpeg">
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-                <div class=" mt-4 flex flex-row justify-center items-center px-5 gap-20">
+                <!-- <div class=" mt-4 flex flex-row justify-center items-center px-5 gap-20">
                     <button
                         class="bg-[#00457A] p-2 text-white rounded-md disabled:bg-[#00457a92]"
                         :disabled="!sermons.prev_page_url" 
@@ -52,7 +52,7 @@
                         @click="router.get(sermons.next_page_url, {}, { preserveState: true })">
                         Next
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
