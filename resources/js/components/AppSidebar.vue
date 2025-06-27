@@ -18,11 +18,11 @@ const mainNavItems: NavItem[] = [
         href: '/admin_calendar',
         icon: Calendar,
     },
-    {
-        title: 'Sermons',
-        href: '/admin_sermon',
-        icon: Volume2Icon,
-    },
+    // {
+    //     title: 'Sermons',
+    //     href: '/admin_sermon',
+    //     icon: Volume2Icon,
+    // },
     {
         title: 'Prayer',
         href: '/admin_prayer',
