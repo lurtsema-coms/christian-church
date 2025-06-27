@@ -21,11 +21,13 @@
 
         <div class="relative z-10 flex flex-col px-5 mt-12">
             <div class="z-10">
-                <div v-for="sermon in sermons.data" :key="sermon.id" class="mt-12 flex flex-col md:flex-row justify-center items-center px-5 md:h-[16rem] rounded-md mb-10">
+                <div v-for="sermon in sermons.data" :key="sermon.id" class="mt-12 flex flex-col md:flex-row justify-center items-center px-5 md:h-[18rem] rounded-md mb-10">
                     <img :src="sermon.image_url" alt="Image" class="w-full h-full rounded-t-lg md:max-w-md md:rounded-t-none lg:rounded-l-lg">
-                    <div class="bg-[#00457A] h-full w-full md:max-w-[36rem] p-[40px] text-white rounded-b-lg md:rounded-b-none lg:rounded-r-lg">
-                        <span class="block text-[1.5rem] font-bold text-center mb-1">{{ sermon.title }}</span>
-                        <div v-html="sermon.description"></div>
+                    <div class="flex flex-col bg-[#00457A] h-full w-full md:max-w-[36rem] p-[40px] text-white rounded-b-lg md:rounded-b-none lg:rounded-r-lg">
+                        <div class="flex-1">
+                            <span class="block text-[1.5rem] font-bold text-center mb-1">{{ sermon.title }}</span>
+                            <div class=" text-center " v-html="sermon.description"></div>
+                        </div>
                         <div class="mt-5 rounded">
                             <audio controls class="w-full ">
                                 <source :src="sermon.audio_url" type="audio/mpeg">
