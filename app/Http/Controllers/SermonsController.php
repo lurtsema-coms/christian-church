@@ -34,47 +34,47 @@ class SermonsController extends Controller
     //     ]);
     // }
 
-public function display()
-{
-    $url = 'https://feed.podbean.com/unstoppablerevkev/feed.xml';
+    public function display()
+    {
+        $url = 'https://feed.podbean.com/unstoppablerevkev/feed.xml';
 
-    $context = stream_context_create([
-        "ssl" => [
-            "verify_peer" => false,
-            "verify_peer_name" => false,
-        ]
-    ]);
+        $context = stream_context_create([
+            "ssl" => [
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ]
+        ]);
 
-    $rssContent = file_get_contents($url, false, $context);
-    if (!$rssContent) {
-        abort(500, "Failed to load RSS feed.");
-    }
+        $rssContent = file_get_contents($url, false, $context);
+        if (!$rssContent) {
+            abort(500, "Failed to load RSS feed.");
+        }
 
-    $rss = simplexml_load_string($rssContent);
+        $rss = simplexml_load_string($rssContent);
 
-    $defaultImage = (string) $rss->channel->image->url ?? '/img/default-sermon.jpg';
+        $defaultImage = (string) $rss->channel->image->url ?? '/img/default-sermon.jpg';
 
-    $sermons = collect();
+        $sermons = collect();
 
-    foreach ($rss->channel->item as $item) {
-        // Check if <itunes:image> exists
-        $itunes = $item->children('itunes', true);
-        $image = isset($itunes->image) ? (string) $itunes->image->attributes()->href : $defaultImage;
+        foreach ($rss->channel->item as $item) {
+            // Check if <itunes:image> exists
+            $itunes = $item->children('itunes', true);
+            $image = isset($itunes->image) ? (string) $itunes->image->attributes()->href : $defaultImage;
 
-        $sermons->push([
-            'title' => (string) $item->title,
-            'description' => (string) $item->description,
-            'audio_url' => (string) $item->enclosure['url'],
-            'image_url' => $image,
+            $sermons->push([
+                'title' => (string) $item->title,
+                'description' => (string) $item->description,
+                'audio_url' => (string) $item->enclosure['url'],
+                'image_url' => $image,
+            ]);
+        }
+
+        return Inertia::render('Sermons', [
+            'sermons' => [
+                'data' => $sermons
+            ]
         ]);
     }
-
-    return Inertia::render('Sermons', [
-        'sermons' => [
-            'data' => $sermons
-        ]
-    ]);
-}
 
 
     public function create(): Response
