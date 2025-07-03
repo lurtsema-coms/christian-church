@@ -43,11 +43,11 @@ defineProps({
                         </div>
                     </div>
                 </div>
-                <!-- <div class="flex flex-row items-center justify-center gap-20 px-5 mt-4 ">
+                <div class="flex flex-row items-center justify-center gap-20 px-5 mt-4">
                     <button
                         class="bg-[#00457A] p-2 text-white rounded-md disabled:bg-[#00457a92]"
                         :disabled="!sermons.prev_page_url" 
-                        @click="router.get(sermons.prev_page_url, {}, { preserveState: true })">
+                        @click="$inertia.get(sermons.prev_page_url)">
                         Previous
                     </button>
                     
@@ -58,10 +58,10 @@ defineProps({
                     <button
                         class="bg-[#00457A] p-2 text-white rounded-md disabled:bg-[#00457a92]"
                         :disabled="!sermons.next_page_url" 
-                        @click="router.get(sermons.next_page_url, {}, { preserveState: true })">
+                        @click="$inertia.get(sermons.next_page_url)">
                         Next
                     </button>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

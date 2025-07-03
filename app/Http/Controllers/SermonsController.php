@@ -7,6 +7,8 @@ use Illuminate\Container\Attributes\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -69,10 +71,21 @@ class SermonsController extends Controller
             ]);
         }
 
+        // Manual pagination
+        $perPage = 10;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentItems = $sermons->slice(($currentPage - 1) * $perPage, $perPage)->values();
+
+        $paginated = new LengthAwarePaginator(
+            $currentItems,
+            $sermons->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
         return Inertia::render('Sermons', [
-            'sermons' => [
-                'data' => $sermons
-            ]
+            'sermons' => $paginated,
         ]);
     }
 
