@@ -1,50 +1,75 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
-import { CirclePlay, Clock3, MapPin } from 'lucide-vue-next';
-import { ref } from 'vue';
+    import { Head, Link } from '@inertiajs/vue3';
+    import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
+    import { Clock3, MapPin, CirclePlay } from 'lucide-vue-next';
+    import { ref, computed } from 'vue'
 
-const watchListen = ref({
-    image1: 'w-2/3',
-    image2: 'w-1/3',
-    image3: 'w-1/3',
-});
-
-function handleHover(imageKey: 'image1' | 'image2' | 'image3') {
-    watchListen.value.image1 = imageKey === 'image1' ? 'w-2/3' : 'w-1/3';
-    watchListen.value.image2 = imageKey === 'image2' ? 'w-2/3' : 'w-1/3';
-    watchListen.value.image3 = imageKey === 'image3' ? 'w-2/3' : 'w-1/3';
-}
-
-function resetHover() {
-    watchListen.value = {
+    const watchListen = ref({
         image1: 'w-2/3',
         image2: 'w-1/3',
         image3: 'w-1/3',
-    };
-}
+    })
 
-defineOptions({ layout: AppLayout });
+    function handleHover(imageKey: 'image1' | 'image2' | 'image3') {
+        watchListen.value.image1 = imageKey === 'image1' ? 'w-2/3' : 'w-1/3'
+        watchListen.value.image2 = imageKey === 'image2' ? 'w-2/3' : 'w-1/3'
+        watchListen.value.image3 = imageKey === 'image3' ? 'w-2/3' : 'w-1/3'
+    }
+
+    function resetHover() {
+        watchListen.value = {
+            image1: 'w-2/3',
+            image2: 'w-1/3',
+            image3: 'w-1/3',
+        }
+    }
+
+    defineOptions({ layout: AppLayout});
+
+    const carousel = ref<HTMLDivElement | null>(null)
+
+    const scrollLeft = () => {
+    const width = carousel.value?.offsetWidth || 0
+    carousel.value?.scrollBy({ left: -width, behavior: 'smooth' })
+    }
+
+    const scrollRight = () => {
+    const width = carousel.value?.offsetWidth || 0
+    carousel.value?.scrollBy({ left: width, behavior: 'smooth' })
+    }
+
+    // Events array
+    const props = defineProps<{
+        events: {
+            id: number;
+            title: string;
+            description: string;
+            location: string;
+            date_time: string;
+        }[];
+    }>();
+
+    const isSingleEvent = computed(() => props.events.length === 1);
 </script>
 
 <template>
     <Head title="Home" />
 
-    <div class="relative mb-12 flex py-40">
-        <img src="/img/tropical-beach.webp" alt="tropical-beach-bg" class="absolute inset-0 z-0 h-full w-full object-cover mix-blend-multiply" />
+    <div class="relative flex py-40 mb-12">
+        <img src="/img/tropical-beach.webp" alt="tropical-beach-bg" class="absolute inset-0 z-0 object-cover w-full h-full mix-blend-multiply" />
 
-        <div class="relative z-30 m-auto max-w-5xl rounded-xl p-10 text-white">
-            <div class="relative mx-auto flex h-52 w-52 items-center justify-center rounded-full bg-white">
+        <div class="relative z-30 max-w-5xl p-10 m-auto text-white rounded-xl">
+            <div class="relative flex items-center justify-center mx-auto bg-white rounded-full h-52 w-52">
                 <img src="/img/church_logo.png" alt="church-logo" class="w-[7rem]" />
             </div>
-            <h1 class="my-8 text-center text-2xl font-bold md:text-3xl lg:text-5xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)">
+            <h1 class="my-8 text-2xl font-bold text-center md:text-3xl lg:text-5xl" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)">
                 Aloha & Welcome!
             </h1>
-            <p class="max-w-2xl text-center text-lg font-bold text-white lg:text-2xl">
+            <p class="max-w-2xl text-lg font-bold text-center text-white lg:text-2xl">
                 Glorifying God by Gathering, Growing, Giving, and Going in the power and unity of the Gospel — that’s our G7 mission as Big Island
                 Christian Church.
             </p>
-            <div class="mt-8 flex flex-wrap justify-center gap-6">
+            <div class="flex flex-wrap justify-center gap-6 mt-8">
                 <a href="#aloha-map"
                     ><Button class="bg-[#e8efe3] px-8 py-6 font-bold text-[#0e3800] hover:text-white md:text-lg">PLAN A VISIT</Button></a
                 >
@@ -83,32 +108,32 @@ defineOptions({ layout: AppLayout });
             description="Catch up on inspiring and faith-filled messages from our Sunday services."
             class="mt-4 px-5 text-center !text-neutral-700"
         />
-        <Link class="mx-auto mt-16 flex h-96 max-w-5xl cursor-pointer overflow-hidden border sm:rounded-md" @mouseleave="resetHover" href="/sermons">
+        <Link class="flex max-w-5xl mx-auto mt-16 overflow-hidden border cursor-pointer h-96 sm:rounded-md" @mouseleave="resetHover" href="/sermons">
             <div :class="['relative h-full transition-all duration-500', watchListen.image1]" @mouseenter="handleHover('image1')">
-                <CirclePlay class="absolute left-1/2 top-1/2 z-10 size-14 -translate-x-1/2 -translate-y-1/2 transform text-white" />
-                <img src="/img/ressurection_day.webp" alt="Church Image" class="h-full w-full object-cover brightness-75" />
+                <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14" />
+                <img src="/img/ressurection_day.webp" alt="Church Image" class="object-cover w-full h-full brightness-75" />
             </div>
             <div :class="['relative h-full transition-all duration-500', watchListen.image2]" @mouseenter="handleHover('image2')">
-                <CirclePlay class="absolute left-1/2 top-1/2 z-10 size-14 -translate-x-1/2 -translate-y-1/2 transform text-white" />
-                <img src="/img/ritual_or_reality.webp" alt="Church Image" class="h-full w-full object-cover brightness-75" />
+                <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14" />
+                <img src="/img/ritual_or_reality.webp" alt="Church Image" class="object-cover w-full h-full brightness-75" />
             </div>
             <div :class="['relative h-full transition-all duration-500', watchListen.image3]" @mouseenter="handleHover('image3')">
-                <CirclePlay class="absolute left-1/2 top-1/2 z-10 size-14 -translate-x-1/2 -translate-y-1/2 transform text-white" />
-                <img src="/img/for_the_joy.webp" alt="Church Image" class="h-full w-full object-cover brightness-75" />
+                <CirclePlay class="absolute z-10 text-white transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 size-14" />
+                <img src="/img/for_the_joy.webp" alt="Church Image" class="object-cover w-full h-full brightness-75" />
             </div>
         </Link>
         <br />
         <Link href="/sermons"><Button class="mx-auto flex bg-[#00245E] px-8 py-6 font-bold md:text-lg">LISTEN TO SERMONS</Button></Link>
     </div>
 
-    <div class="relative overflow-hidden px-5 py-16">
+    <div class="relative px-5 py-16 overflow-hidden">
         <!-- background image -->
-        <img src="/img/cardboard-texture.webp" alt="" class="absolute left-0 top-0 z-0 h-full w-full object-cover brightness-105" />
+        <img src="/img/cardboard-texture.webp" alt="" class="absolute top-0 left-0 z-0 object-cover w-full h-full brightness-105" />
 
         <!-- content wrapper -->
-        <div class="relative z-10 mx-auto flex max-w-5xl flex-col gap-8 lg:flex-row">
-            <img src="/img/pastor.webp" alt="pastor-church" class="mx-auto h-96 max-w-sm rounded-md object-cover lg:rounded-none lg:rounded-l-xl" />
-            <div class="flex flex-col justify-center rounded-r-xl bg-white p-5 md:p-10">
+        <div class="relative z-10 flex flex-col max-w-5xl gap-8 mx-auto lg:flex-row">
+            <img src="/img/pastor.webp" alt="pastor-church" class="object-cover max-w-sm mx-auto rounded-md h-96 lg:rounded-none lg:rounded-l-xl" />
+            <div class="flex flex-col justify-center p-5 bg-white rounded-r-xl md:p-10">
                 <HeadingDescription description="Meet Our Pastor" class="!text-[#00457A]" />
                 <Heading title="Kevin M. Kelley" class="!text-neutral-800" />
                 <HeadingDescription
@@ -125,15 +150,15 @@ defineOptions({ layout: AppLayout });
     <!-- Support The Mission -->
     <div class="bg-[#00457A] px-5 py-16">
         <Heading title="Support The Mission" class="text-center" />
-        <div class="mx-auto max-w-2xl">
+        <div class="max-w-2xl mx-auto">
             <HeadingDescription
                 description="Your generosity helps us serve our community and share the love of Jesus on the Big Island and beyond."
                 class="mt-4 text-center md:mt-8"
             />
         </div>
-        <p class="mt-8 text-center font-semibold text-white">Thank you for partnering with us in ministry.</p>
+        <p class="mt-8 font-semibold text-center text-white">Thank you for partnering with us in ministry.</p>
 
-        <div class="mt-8 flex justify-center gap-6">
+        <div class="flex justify-center gap-6 mt-8">
             <Link href="/online-giving"><Button class="bg-[#D67C6B] px-8 py-6 font-bold md:text-lg">GIVE ONLINE</Button></Link>
             <Link href="/online-giving"><Button class="bg-[#12876F] px-8 py-6 font-bold md:text-lg">LEARN MORE</Button></Link>
         </div>
@@ -154,7 +179,7 @@ defineOptions({ layout: AppLayout });
                 </div>
             </div>
             <div>
-                <img :src="'/img/bible-hands.webp'" alt="Church Image" class="h-60 w-full object-cover md:h-full md:max-w-md" />
+                <img :src="'/img/bible-hands.webp'" alt="Church Image" class="object-cover w-full h-60 md:h-full md:max-w-md" />
             </div>
         </div>
     </div>
@@ -167,37 +192,121 @@ defineOptions({ layout: AppLayout });
             <path d="M1280 51.76c-201 12.49-242.43 53.4-513.58 53.4-320 0-320-57-640-57-48.85.01-90.21 1.35-126.42 3.6V140h1280z" />
         </g>
     </svg>
-    <div class="flex bg-[#005C63]">
-        <div class="mx-auto w-full max-w-7xl px-5 pb-8">
-            <div>
-                <Heading title="Support The Mission" />
-                <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    <CardEvent
-                        imgSrc="/img/sunday-service.webp"
-                        header="Sunday Service"
-                        headerDescription="Regular Schedule"
-                        time="10:00 AM to 11:30 AM"
-                        description="A sacred time to gather as a community, reflect on God’s Word, lift our hearts in praise, and grow deeper in faith together."
-                    />
-                    <CardEvent
-                        imgSrc="/img/fellowship-meal.webp"
-                        header="FELLOWSHIP MEAL"
-                        headerDescription="Every 2nd Sunday of the Month"
-                        time="10:00 AM to 11:30 AM"
-                        description="Join us for our monthly Fellowship Meal on the 2nd Sunday of each month at 11:30am following the church worship service."
-                    />
-                    <CardEvent
-                        imgSrc="/img/kelly-small-group.webp"
-                        header="Kelley Small Group"
-                        headerDescription="Every Wednesday"
-                        time="6:30 PM to 7:30 PM"
-                        description="Come together with us in Bible study, fellowship, and prayer — a space where hearts connect, faith deepens, and lives are lifted."
-                    />
+
+        <div class="flex bg-[#005C63]">
+            <div class="w-full px-5 pb-16 mx-auto max-w-7xl">
+                <div>
+                    <Heading title="Upcoming Events" />
+                    <div class="relative w-full mt-16">
+                    <!-- Left Arrow -->
+                    <button
+                        v-if="props.events.length > 1"
+                        @click="scrollLeft"
+                        class="absolute z-10 p-2 -translate-y-1/2 rounded-full shadow-md -left-[18px] top-1/2 bg-white/80"
+                    >
+                        ◀
+                    </button>
+
+                    <!-- Carousel -->
+                    <div
+                    ref="carousel"
+                    :class="[
+                        'flex -mx-4 overflow-hidden scroll-smooth'
+                    ]"
+                    >
+                    <div
+                        v-for="(event, index) in props.events"
+                        :key="index"
+                        :class="[
+                        'px-4 box-border',
+                        props.events.length === 1
+                            ? 'w-full sm:w-[400px] mx-auto'
+                            : props.events.length === 2
+                            ? 'min-w-full sm:min-w-[50%]'
+                            : 'min-w-full sm:min-w-[50%] lg:min-w-[33.3333%]'
+                        ]"
+                    >
+                        <div
+                        class="group p-8 bg-white/10 hover:bg-white/20 rounded-xl h-[350px] flex flex-col transition-all duration-300 ease-in-out border border-white/20 backdrop-blur-md shadow-lg"
+                        >
+                        <!-- Date -->
+                        <div>
+                            <p class="text-6xl text-white group-hover:text-white">
+                            {{ new Date(event.date_time).getDate().toString().padStart(2, '0') }}
+                            </p>
+                            <p class="mt-1 font-bold tracking-widest text-cyan-200 group-hover:text-white">
+                            {{ new Date(event.date_time).toLocaleString('en-US', { month: 'short' }).toUpperCase() }}
+                            </p>
+                        </div>
+
+                        <!-- Spacer -->
+                        <div class="flex-1"></div>
+
+                        <!-- Footer: Title, Time, Location -->
+                        <div class="flex flex-col justify-end">
+                            <p class="text-2xl font-bold leading-snug whitespace-pre-line text-white/90 group-hover:text-white">
+                            {{ event.title }}
+                            </p>
+                            <div class="mt-4">
+                            <p class="text-white/80 group-hover:text-white">
+                                {{ new Date(event.date_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) }}
+                            </p>
+                            <p class="text-white/80 group-hover:text-white">
+                                @ {{ event.location }}
+                            </p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div v-if="props.events.length < 1" class="text-lg text-center text-white">
+                        Stay tuned for upcoming events!
+                    </div>
+
+                    <!-- Right Arrow -->
+                    <button
+                        v-if="props.events.length > 1"
+                        @click="scrollRight"
+                        class="absolute z-10 p-2 -translate-y-1/2 rounded-full shadow-md -right-[18px] top-1/2 bg-white/80"
+                    >
+                        ▶
+                    </button>
+                    </div>
                 </div>
             </div>
-            <Button class="mx-auto mt-8 flex bg-[#129EAA] px-8 py-6 font-bold md:text-lg">SEE FULL CALENDAR</Button>
         </div>
-    </div>
+        <div class="flex bg-[#005C63]">
+            <div class="w-full px-5 pb-8 mx-auto max-w-7xl">
+                <div>
+                    <Heading title="Support The Mission" />
+                    <div class="grid gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3">
+                        <CardEvent
+                            imgSrc="/img/sunday-service.webp"
+                            header="Sunday Service"
+                            headerDescription="Regular Schedule"
+                            time="10:00 AM to 11:30 AM"
+                            description="A sacred time to gather as a community, reflect on God’s Word, lift our hearts in praise, and grow deeper in faith together."
+                        />
+                        <CardEvent
+                            imgSrc="/img/fellowship-meal.webp"
+                            header="FELLOWSHIP MEAL"
+                            headerDescription="Every 2nd Sunday of the Month"
+                            time="10:00 AM to 11:30 AM"
+                            description="Join us for our monthly Fellowship Meal on the 2nd Sunday of each month at 11:30am following the church worship service."
+                        />
+                        <CardEvent
+                            imgSrc="/img/kelly-small-group.webp"
+                            header="Kelley Small Group"
+                            headerDescription="Every Wednesday"
+                            time="6:30 PM to 7:30 PM"
+                            description="Come together with us in Bible study, fellowship, and prayer — a space where hearts connect, faith deepens, and lives are lifted."
+                        />
+                    </div>
+                </div>
+                <!-- <Button class="mx-auto mt-8 flex bg-[#129EAA] px-8 py-6 font-bold md:text-lg">SEE FULL CALENDAR</Button> -->
+            </div>
+        </div>
 
     <svg
         id="aloha-map"
@@ -217,7 +326,7 @@ defineOptions({ layout: AppLayout });
 
     <!-- Maps -->
     <div class="flex py-16">
-        <div class="mx-auto w-full max-w-7xl px-5 pb-8">
+        <div class="w-full px-5 pb-8 mx-auto max-w-7xl">
             <div class="grid gap-8 lg:grid-cols-2">
                 <div class="flex flex-col justify-center">
                     <Heading title="Aloha in Faith, United by Love" class="!text-[#005C63] md:max-w-80" />

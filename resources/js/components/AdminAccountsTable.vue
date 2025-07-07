@@ -47,21 +47,21 @@ const editAccount = (account) =>{
 
 
 <template>
-    <div class="px-4 py-8 max-w-[380px] mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
+    <div class="bg-white px-4 py-8 max-w-[380px] mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
         <div class="overflow-x-auto">
             <table class="w-full">
                 <thead class="border border-sidebar-border/70 dark:border-sidebar-border">
                     <tr>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Name</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Email</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Role</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Status</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Created At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Updated At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 dark:text-white uppercase whitespace-nowrap">Actions</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Name</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Email</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Role</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Status</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Created At</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Updated At</th>
+                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="border border-sidebar-border/70 dark:border-sidebar-border divide-y divide-gray-200">
+                <tbody class="border divide-y divide-gray-200 border-sidebar-border/70 dark:border-sidebar-border">
                     <tr v-for="user in users.data" :key="user.id">
                         <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.name }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.email }}</td>

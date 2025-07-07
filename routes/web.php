@@ -1,14 +1,22 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\AdminCalendar;
 use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\SermonsController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Prayer;
+use App\Models\Calendar;
+use Illuminate\Support\Carbon;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome');
+    $now = Carbon::now();
+
+    $data = [];
+    $data['events'] = Calendar::where('date_time', '>=', $now)->orderBy('date_time')->get();
+
+    return Inertia::render('Welcome', $data);
 })->name('home');
 
 Route::get('/about-us', function () {
@@ -43,10 +51,13 @@ Route::put('/admin_accounts/{account}/update', [AccountsController::class, 'upda
 Route::resource('admin_prayer', PrayerController::class);
 
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('admin_calendar', AdminCalendar::class);
+});
 
-Route::get('/admin_calendar', function () {
-    return Inertia::render('AdminCalendar');
-})->middleware(['auth', 'verified'])->name('admin_calendar');
+// Route::get('/admin_calendar', function () {
+//     return Inertia::render('AdminCalendar');
+// })->middleware(['auth', 'verified'])->name('admin_calendar');
 
 // Route::get('admin_sermons', function () {
 //     return Inertia::render('AdminSermons');

@@ -22,7 +22,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <Head title="Accounts" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl">
+        <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl bg-gray-50">
             <div class="relative min-h-[100vh] flex-1  md:min-h-min">
                 <AdminAccountsTable :users="users" />
             </div>

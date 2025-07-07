@@ -73,8 +73,8 @@
   <Head title="Admin Prayer" />
 
   <AppLayout :breadcrumbs="breadcrumbs">
-    <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl">
-      <div class="p-7 relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
+    <div class="flex flex-col flex-1 h-full gap-4 p-4 bg-gray-50 rounded-xl">
+      <div class="relative bg-white border p-7 rounded-xl border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
         <!-- Table -->
         <div class="overflow-x-auto">
           <table class="w-full min-w-full">
