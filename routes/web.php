@@ -22,6 +22,10 @@ Route::get('/', function () {
 Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 })->name('about-us');
+
+Route::get('/calendar', function () {
+    return Inertia::render('Calendar');
+})->name('calendar');
     
 Route::get('/prayer', function () {
     return Inertia::render('Prayer', ['prayers' => Prayer::approved()->get()]);

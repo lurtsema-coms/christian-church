@@ -51,6 +51,9 @@ const closeMobileMenu = () => {
                             <Link href="/sermons" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '']">
                                 Sermons
                             </Link>
+                            <Link href="/calendar" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '']">
+                                Calendar
+                            </Link>
                             <a href="https://www.unstoppablekidsbooks.com/blog" target="_blank" :class="navigationMenuTriggerStyle()"> Blog </a>
                             <a
                                 v-if="$page.props.auth?.user"
@@ -128,6 +131,13 @@ const closeMobileMenu = () => {
                     @click="toggleMobileMenu"
                 >
                     Sermons
+                </Link>
+                <Link
+                    href="/calendar"
+                    :class="[$page.url === '/sermons' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']"
+                    @click="toggleMobileMenu"
+                >
+                    Calendar
                 </Link>
                 <a
                     href="https://www.unstoppablekidsbooks.com/blog"
