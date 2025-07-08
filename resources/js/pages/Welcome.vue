@@ -240,20 +240,20 @@
                         </div>
 
                         <!-- Spacer -->
-                        <div class="flex-1"></div>
+                        <!-- <div class="flex-1"></div> -->
 
                         <!-- Footer: Title, Time, Location -->
-                        <div class="flex flex-col justify-end">
-                            <p class="text-2xl font-bold leading-snug whitespace-pre-line text-white/90 group-hover:text-white">
-                            {{ event.title }}
+                        <div class="flex flex-col justify-between h-56"> <!-- Set a fixed height like h-40 -->
+                            <p class="my-4 text-2xl font-bold leading-snug whitespace-pre-line text-white/90 group-hover:text-white">
+                                {{ event.title }}
                             </p>
-                            <div class="mt-4">
-                            <p class="text-white/80 group-hover:text-white">
-                                {{ new Date(event.date_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) }}
-                            </p>
-                            <p class="text-white/80 group-hover:text-white">
-                                @ {{ event.location }}
-                            </p>
+                            <div>
+                                <p class="text-white/80 group-hover:text-white">
+                                    {{ new Date(event.date_time).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }) }}
+                                </p>
+                                <p class="text-white/80 group-hover:text-white">
+                                    @ {{ event.location }}
+                                </p>
                             </div>
                         </div>
                         </div>
