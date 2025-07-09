@@ -21,6 +21,10 @@ defineProps({
         <div class="absolute inset-0 z-0 bg-gray-100/75"></div>
 
         <div class="relative z-10 mt-12 flex flex-col px-5">
+            <HeadingDescription description=" Audio Archive of Church Messages" class="text-center !text-[#00457A] !font-bold"/>
+            <p class="max-w-lg mx-auto mt-3 italic font-semibold text-center text-neutral-700 !px-1">
+                Stay spiritually nourished anytime with our Catch-Up Sermons page — a curated archive of inspiring and faith-filled audio messages from our Sunday services.
+            </p>
             <div class="z-10 w-full">
                 <div
                     v-for="sermon in sermons.data"
@@ -29,7 +33,7 @@ defineProps({
                 >
                     <img :src="sermon.image_url" alt="Image" class="h-full w-full rounded-t-lg md:max-w-md md:rounded-t-none lg:rounded-l-lg" />
                     <div
-                        class="bg-[#00457A] p-6 text-white sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none lg:rounded-r-lg"
+                        class="bg-[#00576B] p-6 text-white sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none lg:rounded-r-lg"
                     >
                         <div class="flex-1">
                             <span class="mb-1 block text-center text-[1.5rem] font-bold">{{ sermon.title }}</span>
