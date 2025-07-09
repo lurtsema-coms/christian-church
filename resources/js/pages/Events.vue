@@ -1,36 +1,6 @@
 <script setup lang="ts">
     import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
     import { Head  } from '@inertiajs/vue3';
-    import { ref, computed } from 'vue'
-    import dayjs from 'dayjs'
-
-    const currentDate = ref(dayjs())
-
-    const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
-    const currentMonthYear = computed(() =>
-    currentDate.value.format('MMMM YYYY')
-    )
-
-    const daysInMonth = computed(() => {
-    return Array.from({ length: currentDate.value.daysInMonth() }, (_, i) => i + 1)
-    })
-
-    const firstDayOfMonth = computed(() => {
-    return currentDate.value.startOf('month').day()
-    })
-
-    const blanks = computed(() => {
-    return Array.from({ length: firstDayOfMonth.value })
-    })
-
-    function goToPrevMonth() {
-    currentDate.value = currentDate.value.subtract(1, 'month')
-    }
-
-    function goToNextMonth() {
-    currentDate.value = currentDate.value.add(1, 'month')
-    }
 
     defineOptions({ layout: AppLayout});
 </script>
@@ -45,26 +15,67 @@
 
         <div class="relative z-10 flex flex-col px-5 mt-12">
             <div class="z-10">
-                <div class="bg-white p-6 rounded shadow">
-                    <div class="flex justify-between items-center mb-4">
-                    <button @click="goToPrevMonth" class="text-blue-600 hover:underline">← Prev</button>
-                    <h2 class="text-xl font-bold">{{ currentMonthYear }}</h2>
-                    <button @click="goToNextMonth" class="text-blue-600 hover:underline">Next →</button>
+                <HeadingDescription description="Church Events & Gatherings" class="text-center !text-[#00457A] !font-bold"/>
+                <p class="max-w-lg mx-auto mt-3 italic font-semibold text-center text-neutral-700 !px-1">
+                    Stay connected and grow in faith with our upcoming church events! From worship nights and Bible studies to family fellowships and community outreach, there’s something for everyone. Join us as we build relationships and strengthen our walk with Christ.
+                </p>
+                <div class="flex flex-row items-center justify-center gap-4 p-5 mt-10 border-b border-gray-300 md:gap-16">
+                    <button class="p-2 bg-[#00576B] text-white rounded-md disabled:bg-[#00457a92]">
+                        Back
+                    </button>
+                    <span class="text-[#00576B] text-xl font-bold">
+                        November 2025   
+                    </span>
+                    <button class="p-2 bg-[#00576B] text-white k rounded-md disabled:bg-[#00457a92]">
+                        Next
+                    </button>
+                </div>
+                <div class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row">
+                    <div class="flex justify-center items-center w-full flex-col bg-[#00576B] text-white font-bold rounded-t-lg  sm:h-full md:w-36 md:rounded-t-none lg:rounded-l-lg">
+                        <span class="text-5xl">8</span>
+                        <span class="text-sm">Nov</span>
                     </div>
-
-                    <div class="grid grid-cols-7 text-center font-semibold text-gray-700 border-b pb-2">
-                    <div v-for="(day, index) in weekDays" :key="index">{{ day }}</div>
+                    <div class="bg-white px-6 py-3 shadow-md  sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
+                        <div class="flex flex-col h-full justify-between gap-3">
+                            <span class="text-[#00576B] text-xl font-bold">RANDOM TITLE HERE</span>
+                            <p class="">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</p>
+                            <div class="text-white text-sm flex gap-2">
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">1:42AM</span>
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ Manila, Philippines</span>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="grid grid-cols-7 gap-2 mt-2">
-                    <div v-for="(blank, i) in blanks" :key="'blank-' + i"></div>
-                    <div
-                        v-for="(day, i) in daysInMonth"
-                        :key="i"
-                        class="border p-2 text-center rounded hover:bg-blue-100 cursor-pointer"
-                    >
-                        {{ day }}
+                </div>
+                <div class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row">
+                    <div class="flex justify-center items-center w-full flex-col bg-[#00576B] text-white font-bold rounded-t-lg  sm:h-full md:w-36 md:rounded-t-none lg:rounded-l-lg">
+                        <span class="text-5xl">8</span>
+                        <span class="text-sm">Nov</span>
                     </div>
+                    <div class="bg-white px-6 py-3 shadow-md  sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
+                        <div class="flex flex-col h-full justify-between gap-3">
+                            <span class="text-[#00576B] text-xl font-bold">RANDOM TITLE HERE</span>
+                            <p class="">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</p>
+                            <div class="text-white text-sm flex gap-2">
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">1:42AM</span>
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ Manila, Philippines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row">
+                    <div class="flex justify-center items-center w-full flex-col bg-[#00576B] text-white font-bold rounded-t-lg  sm:h-full md:w-36 md:rounded-t-none lg:rounded-l-lg">
+                        <span class="text-5xl">8</span>
+                        <span class="text-sm">Nov</span>
+                    </div>
+                    <div class="bg-white px-6 py-3 shadow-md  sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
+                        <div class="flex flex-col h-full justify-between gap-3">
+                            <span class="text-[#00576B] text-xl font-bold">RANDOM TITLE HERE</span>
+                            <p class="">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</p>
+                            <div class="text-white text-sm flex gap-2">
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">1:42AM</span>
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ Manila, Philippines</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
