@@ -36,7 +36,7 @@
 </script>
 
 <template>
-    <Head title="Calendar" />
+    <Head title="Events" />
 
     <div class="relative pb-16 pt-28">
         <!-- BG -->

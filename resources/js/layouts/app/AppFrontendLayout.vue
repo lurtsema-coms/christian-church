@@ -51,8 +51,8 @@ const closeMobileMenu = () => {
                             <Link href="/sermons" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '']">
                                 Sermons
                             </Link>
-                            <Link href="/calendar" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '']">
-                                Calendar
+                            <Link href="/events" :class="[navigationMenuTriggerStyle(), $page.url === '/sermons' ? 'text-sky-700' : '']">
+                                Events
                             </Link>
                             <a href="https://www.unstoppablekidsbooks.com/blog" target="_blank" :class="navigationMenuTriggerStyle()"> Blog </a>
                             <a
@@ -133,11 +133,11 @@ const closeMobileMenu = () => {
                     Sermons
                 </Link>
                 <Link
-                    href="/calendar"
+                    href="/events"
                     :class="[$page.url === '/sermons' ? 'text-sky-700' : '', 'text-lg font-medium text-neutral-700 hover:text-sky-700']"
                     @click="toggleMobileMenu"
                 >
-                    Calendar
+                    Events
                 </Link>
                 <a
                     href="https://www.unstoppablekidsbooks.com/blog"
