@@ -1,25 +1,39 @@
 <script setup lang="ts">
-    import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
-    import { Head  } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
+import AppLayout from '@/layouts/app/AppFrontendLayout.vue';
+import { Head } from '@inertiajs/vue3';
 
-    defineOptions({ layout: AppLayout});
+defineOptions({ layout: AppLayout });
 
+const props = defineProps<{
+    events: Array<{
+        id: number;
+        title: string;
+        description: string;
+        date_time: string;
+        location: string;
+    }>;
+    currentYear: string;
+    currentMonth: string;
+}>();
 
-    const props = defineProps<{
-        events: Array<{
-            id:number;
-            title:string;
-            description:string;
-            date_time:string;
-            location:string;
-        }>;
-        currentYear: string;
-        currentMonth: string;
-    }>();
+const current = new Date(`${props.currentYear}-${props.currentMonth}-01`);
 
-    const monthName = new Date(`${props.currentYear}-${props.currentMonth}-01`).toLocaleString('default', {
-        month: 'long',
+const monthName = current.toLocaleString('default', { month: 'long' });
+
+function goToMonth(offset: number) {
+    const newDate = new Date(current);
+    newDate.setMonth(current.getMonth() + offset);
+
+    const newMonth = newDate.getMonth() + 1; // 0-indexed
+    const newYear = newDate.getFullYear();
+
+    router.get('/events', {
+        year: newYear,
+        month: newMonth.toString().padStart(2, '0')
     });
+}
+
 </script>
 
 <template>
@@ -34,19 +48,31 @@
             <div class="z-10">
                 <HeadingDescription description="Church Events & Gatherings" class="text-center !text-[#00457A] !font-bold"/>
                 <p class="max-w-lg mx-auto mt-3 italic font-semibold text-center text-neutral-700 !px-1">
-                    Stay connected and grow in faith with our upcoming church events! From worship nights and Bible studies to family fellowships and community outreach, there’s something for everyone. Join us as we build relationships and strengthen our walk with Christ.
+                    Stay connected and grow in faith with our upcoming church events! Join us as we build relationships and strengthen our walk with Christ.
                 </p>
                 <div class="flex flex-row items-center justify-center gap-4 p-5 mt-10 border-b border-gray-300 md:gap-16">
-                    <button class="p-2 bg-[#00576B] text-white rounded-md disabled:bg-[#00457a92]">
+                    <button 
+                        class="p-2 bg-[#00576B] text-white rounded-md disabled:bg-[#00457a92]" 
+                        @click="goToMonth(-1)"
+                    >
                         Back
                     </button>
                     <span class="text-[#00576B] text-xl font-bold">
                         {{ monthName }} {{ props.currentYear }} 
                     </span>
-                    <button class="p-2 bg-[#00576B] text-white k rounded-md disabled:bg-[#00457a92]">
+                    <button 
+                        class="p-2 bg-[#00576B] text-white rounded-md disabled:bg-[#00457a92]" 
+                        @click="goToMonth(1)"
+                    >
                         Next
                     </button>
                 </div>
+                    <p 
+                    v-if="props.events.length === 0" 
+                    class="max-w-lg mx-auto mt-10 italic font-semibold text-center text-neutral-700 !px-1"
+                    >
+                        No events scheduled for this month.
+                    </p>
                 <div 
                 class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row"
                 v-for="event in props.events" :key=event.id>

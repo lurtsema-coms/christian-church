@@ -8,19 +8,20 @@ use Inertia\Inertia;
 
 class EventsController extends Controller
 {
-    public function display()
-    {
-        $currentYear = date('Y');
-        $currentMonth = date('m');
 
-        $events = Calendar::whereYear('date_time',$currentYear)
-            ->whereMonth('date_time', $currentMonth)
+    public function display(Request $request)
+    {
+        $year = $request->query('year', date('Y'));
+        $month = $request->query('month', date('m'));
+
+        $events = Calendar::whereYear('date_time', $year)
+            ->whereMonth('date_time', $month)
             ->get();
 
         return Inertia::render('Events', [
             'events' => $events,
-            'currentYear' => $currentYear,
-            'currentMonth' => $currentMonth,
+            'currentYear' => $year,
+            'currentMonth' => $month,
         ]);
     }
 }
