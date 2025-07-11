@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AdminCalendar;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PrayerController;
 use App\Http\Controllers\SermonsController;
 use Illuminate\Support\Facades\Route;
@@ -23,9 +24,12 @@ Route::get('/about-us', function () {
     return Inertia::render('AboutUs');
 })->name('about-us');
 
-Route::get('/events', function () {
-    return Inertia::render('Events');
-})->name('events');
+
+Route::get('/events',[EventsController::class, 'display'])->name('events');
+
+// Route::get('/events', function () {
+//     return Inertia::render('Events');
+// })->name('events');
     
 Route::get('/prayer', function () {
     return Inertia::render('Prayer', ['prayers' => Prayer::approved()->get()]);

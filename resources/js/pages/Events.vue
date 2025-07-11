@@ -3,6 +3,23 @@
     import { Head  } from '@inertiajs/vue3';
 
     defineOptions({ layout: AppLayout});
+
+
+    const props = defineProps<{
+        events: Array<{
+            id:number;
+            title:string;
+            description:string;
+            date_time:string;
+            location:string;
+        }>;
+        currentYear: string;
+        currentMonth: string;
+    }>();
+
+    const monthName = new Date(`${props.currentYear}-${props.currentMonth}-01`).toLocaleString('default', {
+        month: 'long',
+    });
 </script>
 
 <template>
@@ -24,56 +41,26 @@
                         Back
                     </button>
                     <span class="text-[#00576B] text-xl font-bold">
-                        November 2025   
+                        {{ monthName }} {{ props.currentYear }} 
                     </span>
                     <button class="p-2 bg-[#00576B] text-white k rounded-md disabled:bg-[#00457a92]">
                         Next
                     </button>
                 </div>
-                <div class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row">
+                <div 
+                class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row"
+                v-for="event in props.events" :key=event.id>
                     <div class="flex justify-center items-center w-full flex-col bg-[#00576B] text-white font-bold rounded-t-lg  sm:h-full md:w-36 md:rounded-t-none lg:rounded-l-lg">
-                        <span class="text-5xl">8</span>
-                        <span class="text-sm">Nov</span>
+                        <span class="text-5xl">{{ new Date(event.date_time).getDate() }}</span>
+                        <span class="text-sm">{{ new Date(event.date_time).toLocaleString('default', { month: 'short' }) }}</span>
                     </div>
-                    <div class="bg-white px-6 py-3 shadow-md  sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
+                    <div class="bg-white px-6 py-3 shadow-md w-full  sm:flex sm:h-full  sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
                         <div class="flex flex-col h-full justify-between gap-3">
-                            <span class="text-[#00576B] text-xl font-bold">RANDOM TITLE HERE</span>
-                            <p class="">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</p>
+                            <span class="text-[#00576B] text-xl font-bold">{{event.title}}</span>
+                            <p class="overflow-hidden whitespace-nowrap text-ellipsis ">{{event.description}}</p>
                             <div class="text-white text-sm flex gap-2">
-                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">1:42AM</span>
-                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ Manila, Philippines</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row">
-                    <div class="flex justify-center items-center w-full flex-col bg-[#00576B] text-white font-bold rounded-t-lg  sm:h-full md:w-36 md:rounded-t-none lg:rounded-l-lg">
-                        <span class="text-5xl">8</span>
-                        <span class="text-sm">Nov</span>
-                    </div>
-                    <div class="bg-white px-6 py-3 shadow-md  sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
-                        <div class="flex flex-col h-full justify-between gap-3">
-                            <span class="text-[#00576B] text-xl font-bold">RANDOM TITLE HERE</span>
-                            <p class="">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</p>
-                            <div class="text-white text-sm flex gap-2">
-                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">1:42AM</span>
-                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ Manila, Philippines</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-10 mt-12 flex flex-col items-center justify-center rounded-md px-5 md:h-[10rem] md:flex-row">
-                    <div class="flex justify-center items-center w-full flex-col bg-[#00576B] text-white font-bold rounded-t-lg  sm:h-full md:w-36 md:rounded-t-none lg:rounded-l-lg">
-                        <span class="text-5xl">8</span>
-                        <span class="text-sm">Nov</span>
-                    </div>
-                    <div class="bg-white px-6 py-3 shadow-md  sm:flex sm:h-full sm:w-full sm:flex-col md:max-w-[36rem] md:rounded-b-none md:rounded-r-lg">
-                        <div class="flex flex-col h-full justify-between gap-3">
-                            <span class="text-[#00576B] text-xl font-bold">RANDOM TITLE HERE</span>
-                            <p class="">"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"</p>
-                            <div class="text-white text-sm flex gap-2">
-                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">1:42AM</span>
-                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ Manila, Philippines</span>
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">{{ new Date(event.date_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}</span>
+                                <span class="bg-[#00576B] px-3 py-1 rounded-xl">@ {{ event.location }}</span>
                             </div>
                         </div>
                     </div>
