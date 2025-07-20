@@ -95,7 +95,7 @@ class AdminCalendar extends Controller
             'img_url' => $data['imgUrl'],
         ]);
 
-        return redirect()->route('admin_calendar.index')->with('success', 'Successfully Updated');;
+        return redirect()->route('admin_calendar.index')->with('success', 'Successfully Updated');
     }
 
     /**

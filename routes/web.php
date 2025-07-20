@@ -55,12 +55,12 @@ Route::put('/admin_accounts/{id}/delete',[AccountsController::class,'delete'])->
 Route::get('/admin_accounts/{account}/edit', [AccountsController::class, 'edit'])->middleware(['auth', 'verified'])->name('accounts.edit');
 Route::put('/admin_accounts/{account}/update', [AccountsController::class, 'update'])->middleware(['auth', 'verified'])->name('accounts.update');
 
-// Prayer
-Route::resource('admin_prayer', PrayerController::class);
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('admin_calendar', AdminCalendar::class);
+    // Prayer
+    Route::resource('admin_prayer', PrayerController::class);
 });
 
 // Route::get('/admin_calendar', function () {

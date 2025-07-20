@@ -11,11 +11,42 @@ class PrayerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('AdminPrayer', [
-            'prayers' => Prayer::get(),
-        ]);
+        $search = $request->input('search');
+        $data = [];
+
+        $data['prayers'] = Prayer::query()
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('prayer_title', 'like', "%{$search}%")
+                    ->orWhere('name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('prayer_category', 'like', "%{$search}%")
+                    ->orWhere('prayer_details', 'like', "%{$search}%");
+
+                    // Format: "Sat, July 19, 2025"
+                    $q->orWhereRaw("DATE_FORMAT(created_at, '%a, %M %d, %Y') LIKE ?", ["%{$search}%"]);
+
+                    // Optional extra formats (in case user types different variations)
+                    $q->orWhereRaw("DATE_FORMAT(created_at, '%Y-%m-%d') LIKE ?", ["%{$search}%"]);
+                    $q->orWhereRaw("DATE_FORMAT(created_at, '%M %d %Y') LIKE ?", ["%{$search}%"]);
+                    $q->orWhereRaw("DATE_FORMAT(created_at, '%M') LIKE ?", ["%{$search}%"]);
+                    $q->orWhereRaw("DATE_FORMAT(created_at, '%Y') LIKE ?", ["%{$search}%"]);
+
+                    // Handle "Active"/"Inactive" for `is_approved`
+                    if (strtolower($search) === 'active') {
+                        $q->orWhere('is_approved', 1);
+                    } elseif (strtolower($search) === 'inactive') {
+                        $q->orWhere('is_approved', 0);
+                        $q->orWhere('is_approved', null);
+                    }
+                });
+            })
+            ->orderByDesc('created_at')
+            ->paginate(10);
+
+        return Inertia::render('AdminPrayer', $data);
     }
 
     /**
@@ -55,21 +86,24 @@ class PrayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prayer $prayer)
+    public function edit(string $id)
     {
-        //
+        $data = [];
+        $data['prayer'] = Prayer::findOrFail($id);
+        
+        return Inertia::render('AdminPrayerEdit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $admin_prayer)
+    public function update(Request $request, string $id)
     {
-        $prayer = Prayer::findOrFail($admin_prayer); // Use findOrFail to throw a 404 if not found
+        $prayer = Prayer::findOrFail($id);
         $prayer->is_approved = $prayer->is_approved ? 0 : 1;
         $prayer->save();
 
-        return back()->with('success', 'Prayer status updated successfully.');
+        return redirect()->route('admin_prayer.index')->with('success', 'Prayer status updated successfully.');
     }
 
     /**

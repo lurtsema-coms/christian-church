@@ -4,6 +4,7 @@ import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import { Button } from '@/components/ui/button'
+import HeaderSub from '@/components/HeaderSub.vue';
 import AdminAccountsTable from '@/components/AdminAccountsTable.vue';
 
 defineProps({
@@ -24,6 +25,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl bg-gray-50">
             <div class="relative min-h-[100vh] flex-1  md:min-h-min">
+                <HeaderSub title="Accounts" subtitle="Manage the users of your application. You can edit, and delete accounts." />
                 <AdminAccountsTable :users="users" />
             </div>
         </div>

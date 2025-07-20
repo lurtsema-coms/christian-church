@@ -21,7 +21,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 <template>
     <div
         v-if="collapsible === 'none'"
-        :class="cn('flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground', props.class)"
+        :class="cn('flex h-full w-[--sidebar-width] flex-col bg-gradient-to-b from-[#12876F] to-[#0D5A4E] text-sidebar-foreground', props.class)"
         v-bind="$attrs"
     >
         <slot />
@@ -32,7 +32,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
             data-sidebar="sidebar"
             data-mobile="true"
             :side="side"
-            class="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+            class="w-[--sidebar-width] bg-gradient-to-b from-[#12876F] to-[#0D5A4E] p-0 text-sidebar-foreground [&>button]:hidden"
             :style="{
                 '--sidebar-width': SIDEBAR_WIDTH_MOBILE,
             }"
@@ -55,7 +55,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
         <div
             :class="
                 cn(
-                    'relative h-svh w-[--sidebar-width] bg-transparent transition-[width] duration-200 ease-linear',
+                    'relative h-svh w-[--sidebar-width] transparent transition-[width] duration-200 ease-linear',
                     'group-data-[collapsible=offcanvas]:w-0',
                     'group-data-[side=right]:rotate-180',
                     variant === 'floating' || variant === 'inset'
@@ -82,7 +82,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
         >
             <div
                 data-sidebar="sidebar"
-                class="flex h-full w-full flex-col bg-sidebar text-sidebar-foreground group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+                class="flex h-full w-full flex-col bg-gradient-to-b from-[#12876F] to-[#0D5A4E] text-sidebar-foreground group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
             >
                 <slot />
             </div>

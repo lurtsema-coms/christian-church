@@ -7,6 +7,6 @@
         <AppLogoIcon class="text-white fill-current size-5 dark:text-black" />
     </div>
     <div class="grid flex-1 ml-1 text-sm text-left">
-        <span class="mb-0.5 truncate font-semibold leading-none">BICC</span>
+        <span class="mb-0.5 truncate font-semibold leading-none text-white">BICC</span>
     </div>
 </template>
