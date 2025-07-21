@@ -24,7 +24,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex flex-col flex-1 h-full gap-4 p-4 rounded-xl bg-gray-50">
-            <div class="relative min-h-[100vh] flex-1  md:min-h-min">
+            <div class="relative min-h-[100vh] flex-1  md:min-h-min px-8">
                 <HeaderSub title="Accounts" subtitle="Manage the users of your application. You can edit, and delete accounts." />
                 <AdminAccountsTable :users="users" />
             </div>

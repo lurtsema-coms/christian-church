@@ -13,6 +13,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
+import { PencilIcon, Trash } from 'lucide-vue-next';
 
 
 
@@ -47,21 +48,21 @@ const editAccount = (account) =>{
 
 
 <template>
-    <div class="bg-white px-4 py-8 max-w-[380px] mx-auto space-y-8 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border sm:container sm:rounded-lg sm:px-6 lg:px-8">
+    <div class="mt-8 overflow-hidden rounded-md">
         <div class="overflow-x-auto">
             <table class="w-full">
-                <thead class="border border-sidebar-border/70 dark:border-sidebar-border">
+                <thead class="bg-[#12876F] border-b">
                     <tr>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Name</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Email</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Role</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Status</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Created At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Updated At</th>
-                        <th class="px-6 py-3 text-sm tracking-wider text-left text-gray-500 uppercase dark:text-white whitespace-nowrap">Actions</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Name</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Email</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Role</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Status</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Created At</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Updated At</th>
+                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
-                <tbody class="border divide-y divide-gray-200 border-sidebar-border/70 dark:border-sidebar-border">
+                <tbody class="bg-white">
                     <tr v-for="user in users.data" :key="user.id">
                         <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.name }}</td>
                         <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.email }}</td>
@@ -79,7 +80,7 @@ const editAccount = (account) =>{
                                 <template v-if="user.approval_status === 0">
                                     <Dialog>
                                         <DialogTrigger>
-                                            <Button >Approve</Button>
+                                            <Button>Approve</Button>
                                         </DialogTrigger>
                                         <DialogContent>
                                             <form class="space-y-6" >
@@ -125,10 +126,22 @@ const editAccount = (account) =>{
                                     </Dialog>
                                 </template>
                                 <template v-else-if="user.approval_status === 1">
-                                    <Button @click="editAccount(user)">Edit</Button>
+                                    <!-- <Button class="bg-sky-600" @click="editAccount(user)">Edit</Button> -->
+                                    <!-- Edit -->
+                                    <button 
+                                        @click="editAccount(user)"
+                                        class="text-sm cursor-pointer text-sky-600 hover:underline"
+                                    >
+                                        <PencilIcon class="size-5 hover:text-sky-800" />
+                                    </button>
                                     <Dialog>
                                         <DialogTrigger>
-                                            <Button variant="destructive">Delete</Button>
+                                            <!-- <Button variant="destructive">Delete</Button> -->
+                                            <button 
+                                                class="relative text-sm text-red-600 cursor-pointer top-0.5 hover:underline"
+                                            >
+                                                <Trash class="size-5 hover:text-red-800" />
+                                            </button>
                                         </DialogTrigger>
                                         <DialogContent>
                                             <form class="space-y-6" >
