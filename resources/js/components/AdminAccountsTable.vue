@@ -53,29 +53,29 @@ const editAccount = (account) =>{
             <table class="w-full">
                 <thead class="bg-[#12876F] border-b">
                     <tr>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Name</th>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Email</th>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Role</th>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Status</th>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Created At</th>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Updated At</th>
-                        <th class="px-6 py-3 text-sm text-left text-white dark:text-white whitespace-nowrap">Actions</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Name</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Email</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Role</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Status</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Created At</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Updated At</th>
+                        <th class="p-4 text-sm text-left text-white dark:text-white whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">
-                    <tr v-for="user in users.data" :key="user.id">
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.name }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.email }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'User' : 'N/A' }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap":class="{
+                    <tr v-for="user in users.data" :key="user.id" class="border-b hover:bg-gray-50 last:border-b-0">
+                        <td class="p-4 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.name }}</td>
+                        <td class="p-4 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.email }}</td>
+                        <td class="p-4 text-sm text-gray-700 dark:text-white whitespace-nowrap">{{ user.role_id === 1 ? 'Admin' : user.role_id === 2 ? 'User' : 'N/A' }}</td>
+                        <td class="p-4 text-sm font-medium text-gray-700 dark:text-white whitespace-nowrap":class="{
                             'text-orange-500': user.approval_status == 0,
                             'text-green-600': user.approval_status == 1,
                             'text-red-500': user.approval_status == 2
                         }"
                         >{{ (user.approval_status == 0)? 'Pending' : (user.approval_status == 1 ? 'Accepted' : 'Rejected') }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap"> {{ new Date(user.created_at).toISOString().split('T')[0] }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">  {{ new Date(user.updated_at).toISOString().split('T')[0] }}</td>
-                        <td class="px-6 py-3 text-sm text-gray-700 dark:text-white whitespace-nowrap">
+                        <td class="p-4 text-sm text-gray-700 dark:text-white whitespace-nowrap"> {{ new Date(user.created_at).toISOString().split('T')[0] }}</td>
+                        <td class="p-4 text-sm text-gray-700 dark:text-white whitespace-nowrap">  {{ new Date(user.updated_at).toISOString().split('T')[0] }}</td>
+                        <td class="p-4 text-sm text-gray-700 dark:text-white whitespace-nowrap">
                             <div class="flex items-center gap-2">
                                 <template v-if="user.approval_status === 0">
                                     <Dialog>
